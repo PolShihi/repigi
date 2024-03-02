@@ -1,14 +1,14 @@
-import math
-from validation_functions import *
-
-'''
-for given x and eps returns 
+'''For given x and eps returns \
 the number of terms of the Taylor series that approximates the function ln(1 - x), the sum of this series, the value of the function ln(1-x) itself
 lr: 3, name: Working with Python
-version: 1.0
+version: 1.0.1
 FIO: Lyamtsev H. K.
-date of development: 01.03.2024
-'''
+date of development: 02.03.2024'''
+
+import math
+import usefuls
+from validation_functions import *
+
 
 MAX_ITERATIONS = 500
 
@@ -36,10 +36,11 @@ def calculate_iters(x, eps):
 
 
 def execute():
-    '''execute first task'''
+    '''for given x and eps will display \
+the number of terms of the Taylor series that approximates the function ln(1 - x), the sum of this series, the value of the function ln(1-x) itself'''
 
     x = 0
-    print("Input x (float value between -1 and 1, excluded): ", end='')
+    print("Enter x (float value between -1 and 1, excluded): ", end='')
     while True:
         try:
             x = consistent_validation(
@@ -51,7 +52,7 @@ def execute():
         break
 
     eps = 0
-    print("Input eps: ", end='')
+    print("Enter eps: ", end='')
     while True:
         try:
             eps = consistent_validation(
@@ -74,8 +75,4 @@ def execute():
 
 
 if __name__ == "__main__":
-    while True:
-        execute()
-        print("Do you want to terminate the program? (y if yes): ")
-        if input() == 'y':
-            break
+    usefuls.do_reexcecution(execute)

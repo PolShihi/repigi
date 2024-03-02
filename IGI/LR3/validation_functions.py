@@ -27,7 +27,7 @@ def positive_validation(value):
     '''
     
     if value <= 0:
-        raise ValueError("Enter a value between -1 and 1, excluded")
+        raise ValueError("Enter a positive value, excluded")
     
     return value
 
@@ -40,4 +40,18 @@ def consistent_validation(value, *funcs):
     for func in funcs:
         result = func(result)
         
+    return result
+
+
+def int_validation(value):
+    '''
+    checks whether the value can be converted to integer
+    '''
+    
+    result = 0
+    try:
+        result = int(value)
+    except ValueError:
+        raise ValueError("Enter integer value")
+    
     return result
