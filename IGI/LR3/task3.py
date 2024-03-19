@@ -1,8 +1,8 @@
 '''For a given string, the number of spaces symbols is displayed
 lr: 3, name: Working with Python
-version: 1.0
+version: 1.0.1
 FIO: Lyamtsev H. K.
-date of development: 02.03.2024'''
+date of development: 19.03.2024'''
 
 import usefuls
 

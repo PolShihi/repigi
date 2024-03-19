@@ -1,17 +1,25 @@
 '''For a given sequence of float numbers, prints the sequence, the index of the minimum negative element of the sequence and \
 the sum of the elements of the sequence, located between the first and second negative elements
 lr: 3, name: Working with Python
-version: 1.0.1
+version: 1.0.2
 FIO: Lyamtsev H. K.
-date of development: 02.03.2024'''
+date of development: 19.03.2024'''
 
 import usefuls
 import initialize_functions
 from validation_functions import *
 
 
-def find_min_neg_index(seq):
-    '''finds the index of the minimum negative element of the sequence'''
+def find_min_neg_index(seq: list) -> int:
+    '''This function finds the index of the minimum negative element in a given sequence. It returns the index of the first occurrence of the minimum negative element. \
+If no negative element is found, it returns -1.
+
+Parameters:
+seq (list): The sequence of elements in which to search for the minimum negative element.
+
+Returns:
+index (int): The result of the function, which is the index of the minimum negative element in the sequence. If no negative element is found, it returns -1.'''
+
     try:
         min_value = min([el for el in seq if el < 0])
     except ValueError:
@@ -19,8 +27,17 @@ def find_min_neg_index(seq):
     return seq.index(min_value)
 
 
-def find_sum_between_neg(seq: list):
-    '''finds the sum of the elements of the sequence, located between the first and second negative elements'''
+def find_sum_between_neg(seq: list) -> float:
+    '''This function finds the sum of the elements in a given sequence that are located between the first and second negative elements. \
+It assumes the sequence contains at least two negative elements. If the sequence has fewer than two negative elements, it returns None.
+
+Parameters:
+seq (list): The sequence of elements in which to find the sum between the first and second negative elements.
+
+Returns:
+sum (float): The result of the function, which is the sum of the elements located between the first and second negative elements in the sequence. \
+If the sequence has fewer than two negative elements, it returns None.'''
+
     neg_seq = [el for el in seq if el < 0]
 
     if len(neg_seq) < 2:

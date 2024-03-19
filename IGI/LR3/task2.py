@@ -1,8 +1,8 @@
 '''For given entered integers until the difference of 10000 and their sum is negative, the difference will be displayed
 lr: 3, name: Working with Python
-version: 1.0
+version: 1.0.1
 FIO: Lyamtsev H. K.
-date of development: 02.03.2024'''
+date of development: 19.03.2024'''
 
 import usefuls
 from validation_functions import *

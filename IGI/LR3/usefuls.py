@@ -1,5 +1,12 @@
 def when_executed(func):
-    '''wrap function and display when it was called'''
+    '''This function is a decorator that wraps another function and displays the timestamp when the wrapped function is called. \
+It adds a timestamp print statement before and after executing the wrapped function.
+
+Parameters:
+func (function): The function to be wrapped and decorated.
+
+Returns:
+inner (function): The wrapped function.'''
     
     from datetime import datetime, timezone
     
@@ -13,8 +20,13 @@ def when_executed(func):
 
 
 @when_executed
-def do_reexcecution(func):
-    '''repeatedly executes the function until the character \'y\' is entered'''
+def do_reexcecution(func) -> None:
+    '''This function repeatedly executes the specified function until the character 'y' is entered. \
+It displays the documentation of the function, executes it, and prompts the user to terminate the program by entering 'y'.
+
+Parameters:
+func (function): The function to be repeatedly executed until termination.'''
+
     print(func.__doc__, '\n')
     while True:
         func()
