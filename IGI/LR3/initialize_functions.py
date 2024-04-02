@@ -27,7 +27,7 @@ seq (list): The result of the function, which is a list of entered values. Each 
     return seq
 
 
-def initialize_with_generator():
+def initialize_with_generator_rand():
     '''This function is a generator that continuously yields random integers within the range of -100 to 100.
 
 Yielded Values:
@@ -35,3 +35,25 @@ Random integers: The generator yields random integers within the specified range
 
     while True:
         yield random.randint(-100, 100)
+        
+
+def initialize_with_generator_input(hint: str, *func_valid):
+    '''This function is a generator that prompts the user to enter a value and validates it using the specified validation functions. It repeatedly prompts the user until a valid value is entered. \
+The entered value is yielded as the output.
+
+Parameters:
+hint (str): The prompt or hint to be displayed to the user when requesting input.
+*func_valid: Variable-length argument list of validation functions. These functions should take a value as an argument and perform the necessary validation. Each function should raise a ValueError if the validation fails.
+
+Yielded Value:
+entered_num: The value entered by the user, which has passed all the specified validation functions.'''
+
+    print(hint, end='')
+    while True:
+        try:
+            entered_num = consistent_validation(input(), *func_valid)
+        except ValueError as exc:
+            print(exc, ", try again: ", end='', sep='')
+            continue
+        break
+    yield entered_num
