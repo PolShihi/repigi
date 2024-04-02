@@ -63,8 +63,7 @@ the sum of the elements of the sequence, located between the first and second ne
             continue
         break
 
-    seq = initialize_functions.initialize_with_input(
-        length, "Enter float value: ", float_validation)
+    seq = [el for el in initialize_functions.initialize_with_generator_input(length, "Enter float value: ", float_validation)]
     min_neg_index = find_min_neg_index(seq)
     sum_between_neg = find_sum_between_neg(seq)
 

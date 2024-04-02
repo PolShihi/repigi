@@ -14,8 +14,10 @@ def execute():
     '''For a given string, the number of spaces symbols is displayed'''
     entered_string = input("Enter the string: ")
     result = sum(entered_string.count(sym) for sym in SPACE_SYMBOLS)
+    comma_result = entered_string.count(',')
     print('-' * 50, "Results:",
-          f"the number of space symbols = {result}", '-' * 50, sep='\n')
+          f"the number of space symbols = {result}", 
+          f"the number of comma symbols = {comma_result}", '-' * 50, sep='\n')
 
 
 if __name__ == "__main__":
