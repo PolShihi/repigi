@@ -1,4 +1,4 @@
-'''Display amount of words with length less than 7, word with minimal lenght and starts with \'a\' and sorted words by len of INITIAL_STRING
+'''Display amount of words with length less than 7, word with minimal lenght and ends with \'a\' and sorted words by len of INITIAL_STRING
 lr: 3, name: Working with Python
 version: 1.0.1
 FIO: Lyamtsev H. K.
@@ -41,30 +41,30 @@ count (int): The result of the function, which is the count of words in the list
     return len([string for string in strings if len(string) <= max_len])
 
 
-def find_min_string_startsym(strings: str, symbol: str) -> str:
-    '''This function finds the word with the minimum length among a given list of strings that starts with a specified symbol.
+def find_min_string_endsym(strings: str, symbol: str) -> str:
+    '''This function finds the word with the minimum length among a given list of strings that ends with a specified symbol.
 
 Parameters:
 strings (list): The list of strings to be searched.
-symbol (str): The symbol that the word should start with.
+symbol (str): The symbol that the word should end with.
 
 Returns:
-min_string (str): The result of the function, which is the word with the minimum length among the strings that start with the specified symbol.'''
+min_string (str): The result of the function, which is the word with the minimum length among the strings that ends with the specified symbol.'''
 
     strings_with_startsym = [
-        string for string in strings if string.startswith(symbol)]
+        string for string in strings if string.endswith(symbol)]
     return min(strings_with_startsym, key=len)
 
 
 def execute():
-    '''display amount of words with length less than 7, word with minimal lenght and starts with \'a\' and sorted words by len of INITIAL_STRING'''
+    '''display amount of words with length less than 7, word with minimal lenght and ends with \'a\' and sorted words by len of INITIAL_STRING'''
     print("Initial string:", INITIAL_STRING)
     words = get_words(INITIAL_STRING)
     num_words_less_7 = count_str_max_len(words, 7 - 1)
-    word_min_a = find_min_string_startsym(words, 'a')
+    word_min_a = find_min_string_endsym(words, 'a')
     words.sort(key=len, reverse=True)
     print('-' * 50, "Results:", f"amount of words with length less than 7 = {num_words_less_7}",
-          f"word with minimal lenght and starts with \'a\' = {word_min_a}", f"sorted words by len = {'[' + ', '.join(words) + ']'}", '-' * 50, sep='\n')
+          f"word with minimal lenght and ends with \'a\' = {word_min_a}", f"sorted words by len = {'[' + ', '.join(words) + ']'}", '-' * 50, sep='\n')
 
 
 if __name__ == "__main__":
