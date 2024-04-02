@@ -7,7 +7,7 @@ date of development: 19.03.2024'''
 import usefuls
 
 
-SPACE_SYMBOLS = " ,\t"
+SPACE_SYMBOLS = " \t"
 
 
 def execute():
