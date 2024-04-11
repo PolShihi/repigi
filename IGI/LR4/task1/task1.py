@@ -10,11 +10,13 @@ from validation_functions import *
 from forest_calc import *
 
 def input_for_add(forest: Forest_calc):
-    '''This function prompts the user to input information about a tree and adds the tree to the forest using the add_tree method of a Forest_calc object. \
+    '''
+    This function prompts the user to input information about a tree and adds the tree to the forest using the add_tree method of a Forest_calc object. \
 It validates the user input for the tree type, total quantity of trees, and healthy quantity of trees before adding the tree to the forest.
 
-Parameters:
-forest (Forest_calc): The Forest_calc object representing the forest to which the tree will be added.'''
+    Parameters:
+    forest (Forest_calc): The Forest_calc object representing the forest to which the tree will be added.
+    '''
 
     print("Enter type of tree (string with letters and spaces): ", end='')
 
@@ -55,16 +57,19 @@ forest (Forest_calc): The Forest_calc object representing the forest to which th
 
 
 def input_for_type(forest: Forest_calc):
-    '''This function prompts the user to input a tree type and retrieves information about that tree type from the forest using the get_type_info method of a Forest_calc object. \
+    '''
+    This function prompts the user to input a tree type and retrieves information about \
+that tree type from the forest using the get_type_info method of a Forest_calc object. \
 If the tree type exists in the forest, it returns formatted information about the tree type. \
 If the tree type is not found in the forest, it returns the string "There is no such type of tree in the forest".
 
-Parameters:
-forest (Forest_calc): The Forest_calc object representing the forest from which to retrieve tree type information.
+    Parameters:
+    forest (Forest_calc): The Forest_calc object representing the forest from which to retrieve tree type information.
 
-Returns:
-str: formatted information about the tree type, including its type, total quantity, and healthy quantity, \
-or a message indicating that the tree type does not exist in the forest.'''
+    Returns:
+    str: formatted information about the tree type, including its type, total quantity, and healthy quantity, \
+or a message indicating that the tree type does not exist in the forest.
+    '''
 
     print("Enter type of tree (string with letters and spaces): ", end='')
 
@@ -83,26 +88,24 @@ or a message indicating that the tree type does not exist in the forest.'''
 
 
 def output_for_detailed(forest: Forest_calc):
-    '''This function retrieves detailed disease information for trees in the forest using the disease_trees_detailed_percent method of a Forest_calc object. \
-It formats the information for each tree type, including the tree type and the disease percentage, and returns a string with the formatted details joined by line breaks.
+    '''
+    This function retrieves detailed disease information for trees in the forest using \
+the disease_trees_detailed_percent method of a Forest_calc object. \
+It formats the information for each tree type, including the tree type and the disease percentage, \
+and returns a string with the formatted details joined by line breaks.
 
-Parameters:
-forest (Forest_calc): The Forest_calc object representing the forest from which to retrieve detailed disease information.
+    Parameters:
+    forest (Forest_calc): The Forest_calc object representing the forest from which to retrieve detailed disease information.
 
-Returns:
-str: The formatted details about each tree type in the forest, including the tree type and the corresponding disease percentage. \
-The details are joined by line breaks in the returned string.'''
+    Returns:
+    str: The formatted details about each tree type in the forest, including the tree type and the corresponding disease percentage. \
+    The details are joined by line breaks in the returned string.
+    '''
 
     details = forest.disease_trees_detailed_percent()
 
     return '\n'.join([f"Tree Type: {detail[0]}, disease percentage: {detail[1]:.1f}" for detail in details])
 
-
-trees = [
-    {'type': 'birch', 'total_quantity': 100, 'healthy_quantity': 70},
-    {'type': 'oak', 'total_quantity': 150, 'healthy_quantity': 50},
-    {'type': 'spruce', 'total_quantity': 70, 'healthy_quantity': 10},
-]
 
 TASKS = {
     1: Forest_calc.show_forest_info,
