@@ -1,3 +1,16 @@
+'''Allows you to view different information about the text in file and archive it. \
+Information: number of sentences in the text, number of narrative, interrogative, motivating sentences, \
+average sentence length in characters, average word length in characters, \
+number of Emoticons, list of dates, \
+list of words whose third letter from the end is a consonant, and penultimate is vowel, \
+number of words starting with a vowel, list of words containing two identical letters in a row and their serial numbers, \
+list of words in alphabetical order.
+lr: 4
+version: 1.1.0
+FIO: Lyamtsev H. K.
+date of development: 12.04.2024'''
+
+
 from zip_serializer import *
 from information_finder import *
 from validation_functions import *
@@ -5,13 +18,41 @@ from validation_functions import *
 
 class TaskOutput:
     def __init__(self, information_finder: InformationFinder, zip_serializer: ZipSerializer):
+        '''
+        Initializes a TaskOutput object with an InformationFinder instance and a ZipSerializer instance.
+
+        Parameters:
+        information_finder (InformationFinder): An instance of the InformationFinder class.
+        zip_serializer (ZipSerializer): An instance of the ZipSerializer class.
+        '''
+
         self.information_finder = information_finder
         self.zip_serializer = zip_serializer
 
     def get_text(self):
+        '''
+        Retrieves the text from the InformationFinder instance.
+
+        Returns:
+        str: The text stored in the InformationFinder instance.
+        '''
+
         return self.information_finder.text
 
     def get_results(self):
+        '''
+        Generates a list of various information about the text.
+        Information: number of sentences in the text, number of narrative, interrogative, motivating sentences, \
+average sentence length in characters, average word length in characters, \
+number of Emoticons, list of dates, \
+list of words whose third letter from the end is a consonant, and penultimate is vowel, \
+number of words starting with a vowel, list of words containing two identical letters in a row and their serial numbers, \
+list of words in alphabetical order.
+
+        Returns:
+        str: A string containing the generated information.
+        '''
+
         answer_list = []
         answer_list.append(
             f"Number of sentences in the text: {self.information_finder.count_sentences()}")
@@ -50,6 +91,13 @@ class TaskOutput:
         return '\n'.join(answer_list)
 
     def load_text(self):
+        '''
+        Loads the text from a file named 'input.txt' into the InformationFinder instance.
+
+        Returns:
+        str: A message indicating the success or failure of the operation.
+        '''
+
         path = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), "input.txt")
 
@@ -62,6 +110,13 @@ class TaskOutput:
         return "Text was loaded"
 
     def upload_results(self):
+        '''
+        Uploads the results to a file named 'output.txt'.
+
+        Returns:
+        str: A message indicating the success or failure of the operation, along with the results.
+        '''
+
         path = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), "output.txt")
         results = self.get_results()
@@ -71,11 +126,25 @@ class TaskOutput:
         return f"Results were uploaded, results:\n\n{results}"
 
     def archive_file(self):
+        '''
+        Archives the file using the ZipSerializer instance.
+
+        Returns:
+        str: A message indicating the success of archiving the file.
+        '''
+
         self.zip_serializer.archive_file()
 
         return "File was archived"
 
     def get_information_about_archive_file(self):
+        '''
+        Retrieves information about the archived file from the ZipSerializer instance.
+
+        Returns:
+        str: A string containing information about the archived file.
+        '''
+
         try:
             file_info = self.zip_serializer.get_file_info_in_archive()
         except FileNotFoundError:
