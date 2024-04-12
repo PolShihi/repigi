@@ -149,6 +149,7 @@ def execute(forest):
 
 
 if __name__ == "__main__":
+    print(__doc__)
     forest = Forest_calc()
     while True:
         execute(forest)
