@@ -41,7 +41,7 @@ class ZipSerializer:
         with zipfile.ZipFile(self.zip_path, 'r') as zipf:
             file_info = {}
             for file in zipf.infolist():
-                if file.filename == 'file.txt':
+                if file.filename == 'output.txt':
                     file_info['filename'] = file.filename
                     file_info['file_size'] = file.file_size
                     file_info['compress_size'] = file.compress_size

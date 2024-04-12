@@ -10,9 +10,9 @@ class InformationFinderBasicMixin:
         int: The number of sentences in the text.
         '''
 
-        sentences = re.split(r'[.!?]+', self.text)
+        sentences_count = len(re.findall(r'[.!?]+(\s|$)', self.text))
 
-        return len(sentences)
+        return sentences_count
 
     def count_sentence_types(self):
         '''
@@ -22,9 +22,9 @@ class InformationFinderBasicMixin:
         tuple: A tuple containing the counts of narration, interrogative, and imperative sentences respectively.
         '''
 
-        narration_count = len(re.findall(r'[.]', self.text))
-        interrogative_count = len(re.findall(r'[?]', self.text))
-        imperative_count = len(re.findall(r'[!]', self.text))
+        narration_count = len(re.findall(r'[.]+(\s|$)', self.text))
+        interrogative_count = len(re.findall(r'[?](\s|$)', self.text))
+        imperative_count = len(re.findall(r'[!](\s|$)', self.text))
 
         return narration_count, interrogative_count, imperative_count
 
@@ -36,9 +36,9 @@ class InformationFinderBasicMixin:
         float: The average length of sentences in the text.
         '''
 
-        sentences = re.split(r'[.!?]+', self.text)
-        total_length = sum(char for char in self.text if char.isalpha())
-        average_length = total_length / len(sentences)
+        sentences_count = self.count_sentences()
+        total_length = len([char for char in self.text if char.isalpha()])
+        average_length = total_length / sentences_count
 
         return average_length
 
@@ -50,7 +50,7 @@ class InformationFinderBasicMixin:
         float: The average length of words in the text.
         '''
 
-        words = re.findall(r'\b\w+\b', self.text)
+        words = re.findall(r'\b[a-zA-Z]+\b', self.text)
         total_length = sum(len(word) for word in words)
         average_length = total_length / len(words)
 
@@ -101,7 +101,7 @@ class InformationFinder(InformationFinderBasicMixin):
         '''
 
         words = re.findall(
-            r'\b\w*[^aeiou][aeiou]\w{1}\b', self.text, re.IGNORECASE)
+            r'\b[a-z]*[bcdfghjklmnpqrstvwxyz][aeiou][a-z]{1}\b', self.text, re.IGNORECASE)
 
         return words
 
@@ -113,7 +113,7 @@ class InformationFinder(InformationFinderBasicMixin):
         int: The number of words starting with a vowel.
         '''
 
-        words = re.findall(r'\b[aeiou]\w*\b', self.text, re.IGNORECASE)
+        words = re.findall(r'\b[aeiou][a-z]*\b', self.text, re.IGNORECASE)
 
         return len(words)
 
@@ -126,8 +126,8 @@ class InformationFinder(InformationFinderBasicMixin):
         '''
 
         words_with_repeat = [word[0] for word in re.findall(
-            r'\b(\w*(\w)\2\w*)\b', self.text, re.IGNORECASE)]
-        words_all = re.findall(r'\b\w+\b', self.text)
+            r'\b([a-z]*([a-z])\2[a-z]*)\b', self.text, re.IGNORECASE)]
+        words_all = re.findall(r'\b[a-z]+\b', self.text, re.IGNORECASE)
         words_res = []
         for word in words_with_repeat:
             index = words_all.index(word)
@@ -144,7 +144,7 @@ class InformationFinder(InformationFinderBasicMixin):
         list: The sorted words.
         '''
 
-        words = re.findall(r'\b\w+\b', self.text)
+        words = re.findall(r'\b[a-z]+\b', self.text, re.IGNORECASE)
         sorted_words = sorted(words, key=str.lower)
 
         return sorted_words
