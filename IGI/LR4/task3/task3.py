@@ -45,6 +45,6 @@ def execute():
 
 
 if __name__ == "__main__":
+    print(__doc__)
     while True:
-        print(__doc__)
         execute()
