@@ -13,7 +13,7 @@ class TaskOutput:
         print("Enter epsilon/prexision (positive float value): ", end='')
         while True:
             try:
-                FunctionCalculation.EPS = consistent_validation(
+                FunctionCalculation.eps = consistent_validation(
                     input(), float_validation, positive_validation)
                 break
             except ValueError as ex:
@@ -29,7 +29,7 @@ class TaskOutput:
 
         while True:
             try:
-                FunctionCalculation.STEP = consistent_validation(
+                FunctionCalculation.step = consistent_validation(
                     input(), float_validation, between_0_and_1_validation)
                 break
             except ValueError as ex:

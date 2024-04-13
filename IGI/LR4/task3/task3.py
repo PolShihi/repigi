@@ -20,8 +20,8 @@ TASKS = {
 
 
 def execute():
-    print('-' * 50, f"1 - change epsilon (now {FunctionCalculation.EPS})",
-          f"2 - change step (now {FunctionCalculation.STEP}, range of x values from -1 to 1 not inclusive)",
+    print('-' * 50, f"1 - change epsilon (now {FunctionCalculation.eps})",
+          f"2 - change step (now {FunctionCalculation.step}, range of x values from -1 to 1 not inclusive)",
           "3 - show plots of function ln(1-x) and series that approximates this function",
           "4 - upload plot to file (series_and_function.png)", "5 - show statistics about series values in points", sep='\n')
 

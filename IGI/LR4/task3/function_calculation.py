@@ -3,8 +3,8 @@ import statistics
 
 
 class FunctionCalculation:
-    STEP = 0.1
-    EPS = 0.1
+    step = 0.1
+    eps = 0.1
 
     @staticmethod
     def math_func(x: float) -> float:
@@ -50,7 +50,7 @@ class FunctionCalculation:
         n = 1
         while True:
             series_sum = sum(FunctionCalculation.get_series_members(x, n))
-            if abs(series_sum - FunctionCalculation.math_func(x)) <= FunctionCalculation.EPS:
+            if abs(series_sum - FunctionCalculation.math_func(x)) <= FunctionCalculation.eps:
                 return series_sum
             n += 1
 
@@ -96,7 +96,7 @@ class FunctionCalculation:
         values = []
         while start <= end:
             values.append(start)
-            start += FunctionCalculation.STEP
+            start += FunctionCalculation.step
 
         return values
 
