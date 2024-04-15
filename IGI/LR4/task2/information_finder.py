@@ -75,10 +75,26 @@ class InformationFinder(InformationFinderBasicMixin):
         Initialize the InformationFinder object with the given text.
 
         Parameters:
-        str: The text to be analyzed.
+        text (str): The text to be analyzed.
         '''
 
         self.text = text
+        
+    def __add__(self, other):
+        '''
+        Overloading the addition operator.
+        
+        Parametrs:
+        other (InformationFinder): another instance of InformationFinder class.
+        
+        Returns:
+        InformationFinder: returns new instance of InformationFinder class with concatenated text from both objects.
+        '''
+        
+        if type(other) != InformationFinder:
+            raise NotImplementedError('Addition function only with InformationFinder instance')
+        
+        return InformationFinder(self.text + other.text)
 
     def get_dates(self):
         '''

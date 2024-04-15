@@ -36,6 +36,16 @@ class Square(GeometricShape):
         '''
 
         return f"Shape: {self.SHAPE_NAME}, inradius: {self.inradius}, color: {self.color.color}, area: {self.calculate_area()}"
+    
+    def __str__(self) -> str:
+        '''
+        Overloading __str__ method.
+        
+        Returns:
+        str: A string containing the shape name, inradius, color, and area of the square.
+        '''
+
+        return self.get_parameters()
 
     @classmethod
     def get_shape_name(cls):
