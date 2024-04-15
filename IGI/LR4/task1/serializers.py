@@ -3,22 +3,25 @@
 import csv
 import pickle
 import os
+import abc
 
-class Forest_serializer:
+class Forest_serializer(abc.ABC):
     '''Class for serialization and deserialization forest object'''
 
     def __init__(self, filename):
         '''Initializes the filename field'''
         self.filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), filename)
 
+    @abc.abstractmethod
     def write_forest(self, forest):
         '''Writes a forest object to a file with name in the filename field'''
         pass
-
+    @abc.abstractmethod
     def append_forest(self, forest):
         '''Append a forest object to a file with name in the filename field'''
         pass
 
+    @abc.abstractmethod
     def read_forest(self):
         '''Read a forest object from a file with name in the filename field'''
         pass
@@ -47,7 +50,7 @@ class Forest_serializer_csv(Forest_serializer):
     def read_forest(self):
         with open(self.filename, 'r', newline='') as file:
             reader = csv.DictReader(file)
-            forest = list(reader)
+            forest = [{'type': el['type'], 'total_quantity': int(el['total_quantity']), 'healthy_quantity': int(el['healthy_quantity'])} for el in reader]
 
         return forest
     

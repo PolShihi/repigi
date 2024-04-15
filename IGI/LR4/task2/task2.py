@@ -11,7 +11,7 @@ FIO: Lyamtsev H. K.
 date of development: 12.04.2024'''
 
 
-from task2.task_output_2 import *
+from task_output_2 import *
 
 
 TASKS = {

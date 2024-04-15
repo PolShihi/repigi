@@ -66,4 +66,4 @@ class TaskOutput:
         text (str): The text to be displayed before the result.
         '''
         
-        print(text, func(self.matrix_calc))
+        print(text, func(self.matrix_calc), end='')
