@@ -37,7 +37,7 @@ class InformationFinderBasicMixin:
         '''
 
         sentences_count = self.count_sentences()
-        total_length = len([char for char in self.text if char.isalpha()])
+        total_length = len(re.findall(r'[a-z]', self.text, re.IGNORECASE))
         if sentences_count == 0:
             return 0
         average_length = total_length / sentences_count
