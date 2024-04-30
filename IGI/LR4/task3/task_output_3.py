@@ -68,8 +68,8 @@ class TaskOutput:
         answer_list = []
         answer_list.append(f"Arithmetic mean value: {values_info['mean']}")
         answer_list.append(f"Median value: {values_info['median']}")
-        answer_list.append(
-            f"Mode value: {values_info['mode'][0]}, has no meaning")
+        additional_text = f'{values_info['mode']}' if len(values_info['mode']) != len(y_values_series) else 'all values are diferent'
+        answer_list.append(f"Mode value: {additional_text}")
         answer_list.append(f"Variance value: {values_info['variance']}")
         answer_list.append(
             f"Standart deviation value: {values_info['std_deviation']}")
