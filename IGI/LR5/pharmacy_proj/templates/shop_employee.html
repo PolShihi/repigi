@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block styles %}
+.medicine-frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.medicine-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}Shop{% endblock title %}
+{% block content %}
+<h2>Shop</h2>
+<form method="GET">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Search">
+</form>
+
+{% for medication in medications %}
+<div class="medicine-frame">
+    <h3>{{medication.name}}</h3>
+    <img class="medicine-image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
+    <p style="font-weight: bold;">{{medication.cost}}$</p>
+    <p>{{medication.description}}</p>
+    <p>Instruction: {{medication.instruction}}</p>
+    <p>Categories: 
+        {% for category in medication.categories.all %}
+        {{category.name}}, 
+        {% empty %}
+        no
+        {% endfor %}
+    </p>
+    <p>Supplier's company name: {{medication.supplier.company_name}}</p>
+    <p>Supplier's phone: {{medication.supplier.phone}}</p>
+    <p>Total revenue: {{medication.get_total_revenue}}$</p>
+</div>
+{%empty%}
+<p>No medication.</p>
+{% endfor %}
+
+{% endblock content %}

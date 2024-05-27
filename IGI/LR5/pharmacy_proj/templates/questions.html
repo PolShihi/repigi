@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Q&A{% endblock title %}
+{% block content %}
+<h1>Question and Answer List</h1>
+    {% for question in questions %}
+        <hr>
+        <h2>{{ question.question }}</h2>
+        <p>{{ question.answer }}</p>
+        <p>Date Added: {{ question.date_added }}</p>
+        <hr>
+    {% empty %}
+        <p>No questions.</p>
+    {% endfor %}
+{% endblock content %}

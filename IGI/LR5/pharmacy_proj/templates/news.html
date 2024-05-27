@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block styles %}
+.medicine-frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.medicine-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}News{% endblock title %}
+{% block content %}
+{% if medication %}
+<h3>Our newest product</h3>
+<div class="medicine-frame">
+    <h3>{{medication.name}}</h3>
+    <img class="medicine-image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
+    <p style="font-weight: bold;">{{medication.cost}}$</p>
+    <p>{{medication.description}}</p>
+    <p>Instruction: {{medication.instruction}}</p>
+    <a href="{% url "pharmacy:shop_order" id=medication.id %}">
+        <button class="buy-button">Order Now</button>
+    </a>
+</div>
+{% else %}
+<p>No news</p>
+{% endif %}
+{% endblock content %}

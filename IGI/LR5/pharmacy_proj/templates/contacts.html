@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block styles %}
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}Contacts{% endblock title %}
+{% block content %}
+<h1>Contacts List</h1>
+<ul>
+    {% for employee in employees %}
+        <hr>
+        <li>
+            <h2>{{ employee.user.get_full_name }}</h2>
+            <p>Email: {{ employee.user.email }}
+            <p>Phone: {{ employee.phone }}</p>
+            <p>Position: {{ employee.position }}</p>
+            <img class='image' src="{{ employee.photo.url }}" alt="Employee Photo">
+        </li>
+        <hr>
+    {% empty %}
+        <li>No employees.</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

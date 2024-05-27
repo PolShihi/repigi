@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block styles %}
+.order-frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.medicine-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}User{% endblock title %}
+{% block content %}
+<h2>Client Profile</h2>
+<p><strong>Name:</strong> {{ client.user.get_full_name }}</p>
+<p><strong>Email:</strong> {{ client.user.email }}</p>
+<p><strong>Timezone:</strong> {{ client.timezone_info }}</p>
+<hr>
+<h2>Order list</h2>
+{% for order in client.order_set.all %}
+<div class="order-frame">
+    <p><strong>Medication name:</strong> {{order.medication.name}}</p>
+    <img class="medicine-image" src="{{ order.medication.photo.url }}" alt="{{order.medication.name}} image">
+    <p><strong>Medication description:</strong> {{order.medication.description}}</p>
+    <p><strong>Total cost:</strong> {{order.get_total_cost}}$</p>
+    <p><strong>Quantity:</strong> {{order.quantity}}</p>
+    <p><strong>Pharmacy department:</strong> {{order.department}}</p>
+</div>
+{%empty%}
+<p>No orders.</p>
+{% endfor %}
+{% endblock content %}
