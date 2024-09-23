@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<p>Welcome to the home page</p>
+{% if news %}
+<h1>Latest news</h1>
+<hr>
+<div>
+    <h1>{{ news.title }}</h1>
+    <time>{{ news.posted_date }}</time>
+    <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:400px;">
+    <p>{{ news.content }}</p>
+</div>
+{% endif %}
+{% endblock content %}

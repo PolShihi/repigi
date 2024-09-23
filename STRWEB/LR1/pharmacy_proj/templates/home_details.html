@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<p>Welcome to the home page!</p>
+{% if sorted_medications %}
+<hr>
+<h2>Medication statistics</h2>
+<h3>List of alphabetically sorted medications</h3>
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Total revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for medication in sorted_medications %}
+        <tr>
+          <td>{{ medication.name }}</td>
+          <td>{{ medication.get_total_revenue }}$</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+<p><strong>Average revenue:</strong> {{average_revenue}}$</p>
+<p><strong>Mode revenue:</strong> {{mode_revenue}}$</p>
+<p><strong>Median revenue:</strong> {{median_revenue}}$</p>
+<p><strong>Most popular medication:</strong> {{most_popular_medication.name}} ({{most_popular_medication.get_total_number_of_ordered}} units)</p>
+<p><strong>Most profitable medication:</strong> {{most_profitable_medication.name}} ({{most_profitable_medication.get_total_revenue}}$)</p>
+<image src="{{chart_url}}">
+{% endif %}
+{% if average_age %}
+<hr>
+<h2>Client age statistics</h2>
+<p><strong>Average age:</strong> {{average_age}}</p>
+<p><strong>Median age:</strong> {{median_age}}</p>
+{% endif %}
+{% endblock content %}

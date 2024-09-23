@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Cat fact{% endblock title %}
+{% block content %}
+<h2>Cat fact</h2>
+<p>Random fact about cats is displayed here</p>
+<br>
+{% if error %}
+<p style='font-weight: bold;color: red;'>Error: {{error}}<p>
+{% else %}
+<p><strong>Fact:</strong> {{fact}}</p>
+{% endif %}
+<a href="{% url 'pharmacy:cat' %}">
+    <button>Get new</button>
+</a>
+{% endblock content %}

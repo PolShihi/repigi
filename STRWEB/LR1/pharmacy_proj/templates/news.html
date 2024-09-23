@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}News{% endblock title %}
+{% block content %}
+<h1>News Articles</h1>
+{% if news_list %}
+<ul>
+    {% for news in news_list %}
+        <li>
+            <hr>
+            <time>{{ news.posted_date }}</time>
+            <h2>{{ news.title }}</h2>
+            <p>{{ news.summary }}</p>
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:200px;">
+            <a href="{% url 'pharmacy:news_details' news.id %}">Read More</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<hr>
+<p>No news</p>
+{% endif %}
+{% endblock content %}

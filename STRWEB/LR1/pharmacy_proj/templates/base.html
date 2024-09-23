@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        .navbar {
+            background-color: #f8f8f8;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar li {
+            display: inline;
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .navbar li:last-child {
+            float: right;
+        }
+
+        .navbar li:after {
+            content: "";
+            position: absolute;
+            top: 20%;
+            right: -5px;
+            width: 1px;
+            height: 12px;
+            background-color: #333;
+        }
+        
+        .navbar li:last-child:after {
+            display: none;
+        }
+        
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .content {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fefefe;
+        }
+        {% block styles %}{% endblock %}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'pharmacy:home'%}">Home</a></li>
+            <li><a href="{% url 'pharmacy:info'%}">Info</a></li>
+            <li><a href="{% url 'pharmacy:news'%}">News</a></li>
+            <li><a href="{% url 'pharmacy:shop'%}">Shop</a></li>
+            <li><a href="{% url 'pharmacy:questions'%}">Questions</a></li>
+            <li><a href="{% url 'pharmacy:contacts'%}">Contacts</a></li>
+            <li><a href="{% url 'pharmacy:policy'%}">Policy</a></li>
+            <li><a href="{% url 'pharmacy:vacancies'%}">Vacancies</a></li>
+            <li><a href="{% url 'pharmacy:reviews'%}">Reviews</a></li>
+            <li><a href="{% url 'pharmacy:promo'%}">Promo</a></li>
+            {% if user.is_superuser %}
+            <li><a href="{% url 'pharmacy:medication_category_list'%}">Categories</a></li>
+            <li><a href="{% url 'pharmacy:pharmacy_department_list'%}">Departments</a></li>
+            <li><a href="{% url 'pharmacy:supplier_list'%}">Suppliers</a></li>
+            {% endif %}
+            <li><a href="{% url 'pharmacy:cat'%}">Random cat fact</a></li>
+            <li><a href="{% url 'pharmacy:activity'%}">Random activity</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a style="color:#b01010;" href="{% url 'pharmacy:user'%}">{{request.user.username}}</a></li>
+            <li><a style="color:#1010b0;" href="{% url 'pharmacy:logout'%}">Logout</a></li>
+            {% else %}
+            <li><a style="color:#1010b0;" href="{% url 'pharmacy:login'%}">Login</a></li>
+            {% endif %}
+            <li><a href="{% url "pharmacy:time"%}">Current Timezone:
+                {% if request.session.django_timezone %}
+                {{request.session.django_timezone}}
+                {% else %}
+                UTC
+                {% endif %}
+            </a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
