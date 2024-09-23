@@ -9,6 +9,7 @@ pillow = "*"
 pytz = "*"
 matplotlib = "*"
 requests = "*"
+django-extensions = "*"
 
 [dev-packages]
 

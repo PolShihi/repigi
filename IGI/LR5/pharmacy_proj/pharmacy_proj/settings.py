@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pharmacy_app.apps.PharmacyAppConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -156,4 +157,9 @@ LOGGING = {
             'level': 'INFO',
         },
     },
+}
+
+GRAPH_MODELS = {
+    "all_applications" : True,
+    "group_models" : True,
 }

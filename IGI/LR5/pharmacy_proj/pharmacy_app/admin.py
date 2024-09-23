@@ -36,14 +36,14 @@ class PharmacyDepartmentAdmin(admin.ModelAdmin):
         return f"{obj.get_total_revenue()}"
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'age', 'phone')
-    list_display_links = ('id', 'user')
-    list_filter = ('age',)
+    list_display = ('id', 'date_of_birth', 'date_of_birth', 'phone')
+    list_display_links = ('id',)
+    list_filter = ('date_of_birth',)
     
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('id','user', 'age', 'phone')
+    list_display = ('id','user', 'date_of_birth', 'phone')
     list_display_links = ('id', 'user')
-    list_filter = ('age',)
+    list_filter = ('date_of_birth',)
     
 class CompanyInfoAdmin(admin.ModelAdmin):
     list_display = ('id', 'text')
@@ -83,6 +83,11 @@ class OrderAdmin(admin.ModelAdmin):
     @admin.display(description='Total cost')
     def get_total_cost(self, obj):
         return f"{obj.get_total_cost()}"
+    
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'summary', 'posted_date')
+    list_display_links = ('id', 'title')
+    search_fields = ('title', 'posted_date')
 
 admin.site.register(MedicationCategory, MedicationCategoryAdmin)
 admin.site.register(Medication, MedicationAdmin)
@@ -96,3 +101,4 @@ admin.site.register(Promo, PromoAdmin)
 admin.site.register(Review, ReviewAdmin)
 admin.site.register(Vacancy, VacancyAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(News, NewsAdmin)

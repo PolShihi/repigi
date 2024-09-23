@@ -65,6 +65,11 @@
             <li><a href="{% url 'pharmacy:vacancies'%}">Vacancies</a></li>
             <li><a href="{% url 'pharmacy:reviews'%}">Reviews</a></li>
             <li><a href="{% url 'pharmacy:promo'%}">Promo</a></li>
+            {% if user.is_superuser %}
+            <li><a href="{% url 'pharmacy:medication_category_list'%}">Categories</a></li>
+            <li><a href="{% url 'pharmacy:pharmacy_department_list'%}">Departments</a></li>
+            <li><a href="{% url 'pharmacy:supplier_list'%}">Suppliers</a></li>
+            {% endif %}
             <li><a href="{% url 'pharmacy:cat'%}">Random cat fact</a></li>
             <li><a href="{% url 'pharmacy:activity'%}">Random activity</a></li>
             {% if request.user.is_authenticated %}

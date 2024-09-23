@@ -41,9 +41,26 @@
     <p>Supplier's company name: {{medication.supplier.company_name}}</p>
     <p>Supplier's phone: {{medication.supplier.phone}}</p>
     <p>Total revenue: {{medication.get_total_revenue}}$</p>
+    <div>
+        {% if user.is_superuser %}
+        <a href="{% url "pharmacy:shop_medication_delete" id=medication.id %}">
+            <button>delete</button>
+        </a>
+        <a href="{% url "pharmacy:shop_medication_update" id=medication.id %}">
+            <button>update</button>
+        </a>
+        {% endif %}
+    </div>
 </div>
 {%empty%}
 <p>No medication.</p>
 {% endfor %}
+
+{% if user.is_superuser %}
+<hr>
+<a href="{% url "pharmacy:shop_medication_create" %}">
+    <button>add</button>
+</a>
+{% endif %}
 
 {% endblock content %}
