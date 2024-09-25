@@ -16,9 +16,9 @@
         <hr>
         <li>
             <h2>{{ employee.user.get_full_name }}</h2>
-            <p>Email: {{ employee.user.email }}
-            <p>Phone: {{ employee.phone }}</p>
-            <p>Position: {{ employee.position }}</p>
+            <p><strong>Email:</strong> {{ employee.user.email }}
+            <p><strong>Phone:</strong> {{ employee.phone }}</p>
+            <p><strong>Position:</strong> {{ employee.position }}</p>
             <img class='image' src="{{ employee.photo.url }}" alt="Employee Photo">
             {% if user.is_superuser %}
             <div>

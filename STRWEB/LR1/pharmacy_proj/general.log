@@ -5033,3 +5033,1312 @@ django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 36: 'e
 [WARNING] [2024-09-23 21:15:43,685] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
 [WARNING] [2024-09-23 21:15:47,296] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
 [INFO] [2024-09-23 22:10:50,815] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-23 22:10:58,378] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-23 22:10:58,380] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-23 22:10:58,407] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-23 22:10:58,407] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-23 22:10:58,946] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:22:34,929] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 01:22:44,283] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:22:44,283] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 01:22:44,355] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:22:44,355] [pharmacy_app.views.py] [home_view is called]
+[ERROR] [2024-09-24 01:22:44,895] [django.request.py] [Internal Server Error: /home/]
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: pharmacy_app_order.is_paid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 508, in home_view
+    revenue_list = [medication.get_total_revenue()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 508, in <listcomp>
+    revenue_list = [medication.get_total_revenue()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\models.py", line 97, in get_total_revenue
+    return sum((order.get_total_cost() for order in self.order_set.all() if order.is_paid))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: pharmacy_app_order.is_paid
+[WARNING] [2024-09-24 01:22:45,737] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 01:22:45,781] [django.request.py] [Not Found: /favicon.ico]
+[INFO] [2024-09-24 01:24:00,271] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 01:24:13,347] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:24:13,347] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 01:24:13,418] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:24:13,421] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 01:24:15,708] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 01:24:32,087] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 01:24:32,088] [pharmacy_app.views.py] [policy_view is called]
+[INFO] [2024-09-24 10:16:15,736] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 10:16:19,401] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:16:19,401] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 10:16:19,443] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:16:19,444] [pharmacy_app.views.py] [home_view is called]
+[ERROR] [2024-09-24 10:16:20,728] [django.request.py] [Internal Server Error: /home/]
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 538, in home_view
+    return render(request, 'home_details.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 6: 'static'. Did you forget to register or load this tag?
+[WARNING] [2024-09-24 10:16:21,158] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:16:21,179] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 10:16:45,834] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:16:45,834] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:16:46,091] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:16:54,064] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:16:54,064] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:16:54,312] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:16:55,536] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:16:55,537] [pharmacy_app.views.py] [info_view is called]
+[INFO] [2024-09-24 10:16:55,537] [pharmacy_app.views.py] [There is company info in database]
+[WARNING] [2024-09-24 10:18:35,948] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:18:35,949] [pharmacy_app.views.py] [info_view is called]
+[INFO] [2024-09-24 10:18:35,950] [pharmacy_app.views.py] [There is company info in database]
+[INFO] [2024-09-24 10:18:47,407] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 10:18:49,429] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:18:49,430] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 10:18:49,468] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:18:49,468] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:18:49,915] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:20:55,927] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_proj\settings.py changed, reloading.]
+[INFO] [2024-09-24 10:20:57,811] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 10:21:00,718] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:21:00,719] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 10:21:00,766] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:21:00,766] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:21:01,183] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:23:12,770] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_proj\settings.py changed, reloading.]
+[INFO] [2024-09-24 10:23:14,619] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 10:23:28,037] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:23:28,037] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:23:28,422] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:23:29,812] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:23:29,812] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:23:30,069] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:27:19,991] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\models.py changed, reloading.]
+[INFO] [2024-09-24 10:27:21,911] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 10:40:56,884] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 10:41:50,977] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:41:50,978] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 10:41:51,017] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:41:51,018] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 10:41:51,549] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:41:52,860] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 10:41:52,860] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 10:41:52,923] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:41:53,171] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:41:53,187] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 10:42:12,320] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:42:12,506] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:42:14,037] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:42:14,218] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:42:53,484] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:42:53,726] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:17,896] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:17,966] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:50,861] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:50,894] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:51,004] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:55,931] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:43:55,995] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:20,189] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:20,216] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:20,293] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:31,613] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:31,696] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:34,781] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:34,857] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:38,648] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:38,723] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:41,486] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:41,565] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:47,404] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:47,491] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:48,904] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:44:49,000] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:19,775] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:19,804] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:19,886] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:46,047] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:46,076] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:46,152] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:48,152] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:45:48,234] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:04,988] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:05,018] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:05,096] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:07,954] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:08,034] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:09,335] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:09,415] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:09,933] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:10,011] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:12,571] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:46:12,656] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:05,961] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:06,057] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:23,252] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:23,294] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:23,373] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:25,010] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:25,096] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:39,066] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:41,218] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:44,099] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:50:44,169] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:20,860] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:20,960] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:38,289] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:38,321] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:38,396] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:39,515] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:39,578] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:52,735] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:52,768] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:52,862] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:57,178] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:57,249] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:58:58,807] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:20,406] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:20,439] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:20,514] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:22,614] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:22,686] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:23,148] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:23,223] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:24,037] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:24,110] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:24,583] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:24,657] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:25,006] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:25,072] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:25,665] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:25,746] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:26,308] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 10:59:26,383] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:07:22,081] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py changed, reloading.]
+[INFO] [2024-09-24 11:07:23,995] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 11:14:31,100] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 11:14:33,082] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:14:33,083] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:14:33,118] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:14:33,124] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:14:33,671] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:14:37,011] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:14:37,011] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 11:14:37,028] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:14:37,028] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:14:38,879] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:14:38,880] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:14:38,880] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:14:38,975] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:14:38,977] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:15:06,287] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:16:33,172] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:16:33,172] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:16:33,172] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:16:33,239] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:16:33,251] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:18:18,789] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:18:18,789] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:18:18,791] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:19:22,310] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:22,312] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:19:22,323] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:22,323] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:19:22,324] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:19:22,410] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:23,696] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:23,700] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:19:28,231] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:28,231] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 11:19:28,594] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 11:19:28,962] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:28,962] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:19:29,237] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:31,155] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:19:31,155] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 11:19:31,173] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:31,204] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:31,381] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:31,391] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 11:19:33,995] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:34,085] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:36,051] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:36,128] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:44,418] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:44,523] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:44,631] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:46,310] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:46,378] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:51,874] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:51,912] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:51,994] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:54,268] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:54,793] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:19:55,328] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:20:02,234] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:02,234] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:20:02,261] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:02,261] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:20:02,587] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:20:04,301] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:04,301] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 11:20:04,315] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:04,316] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:20:05,635] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:05,635] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:20:05,635] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:20:05,702] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:20:05,704] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:20:29,394] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:20:29,394] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:20:29,394] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:22:13,980] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:22:13,982] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:22:13,982] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:22:14,046] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:22:14,059] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:22:29,627] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:22:29,855] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:22:29,862] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 11:23:17,892] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:17,892] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:17,892] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:23:19,119] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:19,119] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:19,120] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:23:19,285] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:19,285] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:19,285] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:23:19,435] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:19,435] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:19,435] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:23:19,579] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:19,579] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:19,579] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:23:35,981] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:23:35,981] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:23:35,981] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:24:03,705] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:24:03,705] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:24:03,705] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:25:00,694] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:25:00,694] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:25:00,694] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:25:00,768] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:00,799] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:01,976] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:25:01,976] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:25:01,976] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:25:02,046] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:02,095] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:20,651] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:20,857] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:25:20,864] [django.request.py] [Not Found: /favicon.ico]
+[INFO] [2024-09-24 11:32:38,258] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 11:32:44,281] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:32:44,282] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:32:44,334] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:32:44,334] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:32:44,335] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:32:44,661] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:32:59,636] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:32:59,636] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:33:03,560] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:03,561] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 11:33:03,889] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 11:33:04,237] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:04,237] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:33:05,111] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:07,275] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:07,275] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 11:33:07,297] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:07,448] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:07,676] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:07,676] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 11:33:12,005] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:12,155] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:14,373] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:14,496] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:26,519] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:26,617] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:26,693] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:33,379] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:33,382] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:33:33,402] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:33,403] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:33:33,723] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:35,654] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:35,655] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 11:33:35,667] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:35,668] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:33:37,166] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:33:37,167] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:33:37,167] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:33:37,221] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:33:37,222] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:34:51,652] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 11:34:54,554] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:34:54,554] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:34:54,570] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:34:54,570] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:34:54,570] [pharmacy_app.views.py] [User is client or not authenticated]
+[INFO] [2024-09-24 11:35:24,809] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\models.py changed, reloading.]
+[INFO] [2024-09-24 11:35:25,531] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 11:35:40,367] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 11:35:42,356] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:42,356] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:35:42,375] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:42,376] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:35:42,376] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:35:44,712] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:44,713] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:35:48,023] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:48,024] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 11:35:48,350] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 11:35:48,701] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:48,701] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:35:49,082] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:51,122] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:35:51,123] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 11:35:51,142] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:51,171] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:56,250] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:56,329] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:58,213] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:35:58,294] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:04,693] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:04,769] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:04,836] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:09,611] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:09,673] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:13,475] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:13,511] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:13,593] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:19,978] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:19,979] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:36:19,994] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:19,995] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:36:20,284] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:22,495] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:22,496] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 11:36:22,510] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:22,510] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:36:23,456] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:23,457] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:36:23,457] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:36:23,546] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:23,548] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:45,976] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:45,976] [pharmacy_app.views.py] [contacts_view is called]
+[WARNING] [2024-09-24 11:36:46,042] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:46,044] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:46,046] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:36:50,567] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:36:50,568] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:36:50,568] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:14,654] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:21,317] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:37:21,317] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:37:21,317] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:21,379] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:21,415] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:21,971] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:37:21,973] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:37:21,973] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:22,023] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,062] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,183] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:37:22,184] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:37:22,184] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:22,233] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,266] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,365] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:37:22,365] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:37:22,366] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:22,431] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,480] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,571] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:37:22,572] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:37:22,572] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:37:22,642] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:37:22,691] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:38:35,140] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:38:35,141] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:38:35,147] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:38:35,149] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:38:35,149] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:38:35,227] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:38:35,244] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:38:58,361] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:38:58,361] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:38:58,362] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:39:22,256] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:39:22,487] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:39:22,510] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 11:42:41,141] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:42:41,141] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:42:41,141] [pharmacy_app.views.py] [User is client or not authenticated]
+[INFO] [2024-09-24 11:43:34,480] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\models.py changed, reloading.]
+[INFO] [2024-09-24 11:43:36,465] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 11:43:56,479] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\models.py changed, reloading.]
+[INFO] [2024-09-24 11:43:57,198] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 11:44:25,642] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 11:44:29,539] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:29,541] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:44:29,559] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:29,559] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:44:29,560] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:44:29,653] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:35,011] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:35,011] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:44:38,816] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:38,816] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 11:44:39,139] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 11:44:39,461] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:39,461] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:44:40,267] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:41,887] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:44:41,887] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 11:44:41,904] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:42,033] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:44,614] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:44,747] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:46,727] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:46,839] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:57,911] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:58,031] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:58,108] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:59,355] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:44:59,422] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:02,616] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:02,641] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:02,730] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:07,888] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:07,889] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 11:45:07,908] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:07,908] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 11:45:08,260] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:10,198] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:10,198] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 11:45:10,212] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:10,213] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 11:45:11,080] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:11,081] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:45:11,081] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:45:11,136] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:11,137] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:20,538] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:20,538] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:45:20,538] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:45:45,624] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:45:45,624] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:45:45,626] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:45:45,687] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:45:45,688] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:46:01,143] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:46:01,143] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:46:01,143] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:46:01,207] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:46:01,213] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:46:14,400] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 11:46:14,400] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 11:46:14,404] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 11:46:14,459] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 11:46:14,460] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:18:47,555] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py changed, reloading.]
+[INFO] [2024-09-24 12:18:49,446] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[INFO] [2024-09-24 12:19:40,247] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 12:19:42,464] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:19:42,465] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 12:19:42,497] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:19:42,498] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 12:19:42,498] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 12:19:42,610] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:42,611] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:42,623] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:58,839] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:19:58,839] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 12:19:58,839] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 12:19:59,849] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:59,915] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:59,915] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:19:59,920] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:21:27,821] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:21:56,922] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:21:56,922] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 12:22:00,071] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:22:00,073] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 12:22:00,409] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 12:22:00,735] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:22:00,735] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 12:22:01,127] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:03,693] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:22:03,693] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 12:22:03,717] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:03,748] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:06,285] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:06,379] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:07,892] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:07,967] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:21,170] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:21,199] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:21,265] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:29,975] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:22:29,975] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 12:22:29,999] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:22:30,000] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 12:22:30,306] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:32,841] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:32,917] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:32,917] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:32,951] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:22:32,966] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:23:55,030] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:03,715] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:24:03,716] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 12:24:03,756] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:08,394] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:08,475] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:09,565] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:09,643] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:45,917] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:45,947] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:46,042] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:50,460] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:24:50,460] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 12:24:50,492] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:24:50,492] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 12:24:50,808] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:24:53,837] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:08,035] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:25:08,035] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 12:25:08,086] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:10,101] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:10,188] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:12,098] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:12,175] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:21,478] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:21,507] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:21,581] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:25,247] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:25:25,247] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 12:25:25,272] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 12:25:25,272] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 12:25:25,557] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 12:25:29,266] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:05:27,957] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:05:31,328] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:05:31,328] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 17:05:31,367] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:05:31,368] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 17:05:32,462] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:05:36,023] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[ERROR] [2024-09-24 17:05:36,257] [django.request.py] [Internal Server Error: /html/]
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 874, in html_stuff_view
+    return render(request, 'html_stuff.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 154: 'static', expected 'endblock'. Did you forget to register or load this tag?
+[WARNING] [2024-09-24 17:05:36,456] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:05:36,478] [django.request.py] [Not Found: /favicon.ico]
+[INFO] [2024-09-24 17:06:40,159] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:06:42,228] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:06:42,228] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 17:06:42,271] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:06:42,271] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 17:06:42,755] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:06:43,701] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[ERROR] [2024-09-24 17:06:43,743] [django.request.py] [Internal Server Error: /html/]
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 874, in html_stuff_view
+    return render(request, 'html_stuff.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 511, in parse
+    self.extend_nodelist(nodelist, compiled_result, token)
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\template\base.py", line 528, in extend_nodelist
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: <ExtendsNode: extends "base.html"> must be the first tag in the template.
+[WARNING] [2024-09-24 17:06:56,284] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:07:48,033] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:09:43,791] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:32:19,075] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:32:23,254] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:32:23,254] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 17:32:23,337] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:32:23,337] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 17:32:24,846] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:32:34,032] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:32:34,032] [pharmacy_app.views.py] [questions_view is called]
+[WARNING] [2024-09-24 17:32:43,280] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:35:46,166] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:36:25,276] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:38:20,235] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:43:58,302] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:26,377] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:44:26,377] [pharmacy_app.views.py] [reviews_view is called]
+[WARNING] [2024-09-24 17:44:29,777] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:44:29,778] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 17:44:29,842] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:30,319] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:30,366] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 17:44:36,119] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:36,638] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:38,667] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:38,974] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:44:59,827] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:00,329] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:17,247] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:17,658] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:18,408] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:18,778] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:28,948] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:29,216] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:30,371] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:30,605] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:45:39,653] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:45:39,653] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:45:39,678] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:45:39,678] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:45:54,416] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:45:54,416] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:45:55,233] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:45:55,998] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:45:56,013] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:45:56,028] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:45:56,276] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:56,281] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:56,285] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:56,286] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:59,499] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:45:59,500] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:45:59,500] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:45:59,699] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:59,718] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:59,733] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:59,756] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:45:59,770] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:46:02,184] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:02,186] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:46:08,914] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:08,914] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:46:08,921] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:46:08,976] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:08,976] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:46:08,976] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:46:12,116] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[ERROR] [2024-09-24 17:46:12,209] [django.request.py] [Internal Server Error: /order/pay/1]
+Traceback (most recent call last):
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py", line 865, in order_pay_view
+    return redirect('user')
+           ^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\253501_LYAMTSEV_14\IGI\LR5\.venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'user' not found. 'user' is not a valid view function or pattern name.
+[INFO] [2024-09-24 17:46:41,353] [django.utils.autoreload.py] [C:\253501_LYAMTSEV_14\STRWEB\LR1\pharmacy_proj\pharmacy_app\views.py changed, reloading.]
+[INFO] [2024-09-24 17:46:44,279] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:46:46,804] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:46,812] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:46:46,815] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:46:57,181] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:57,184] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:46:57,184] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:46:58,729] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:46:58,733] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:47:03,336] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:03,342] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:47:03,344] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:47:03,394] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:03,394] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:47:03,399] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:47:08,246] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:08,248] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:47:08,249] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:47:10,070] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:10,074] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:47:14,210] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:14,212] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:47:14,216] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:47:14,257] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:14,257] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:47:14,257] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:47:15,742] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:47:15,781] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:15,787] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:47:15,789] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:47:27,266] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:47:27,266] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:47:27,301] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:47:27,308] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:47:36,668] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:47:36,668] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:47:37,363] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:47:38,127] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:47:38,127] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 17:47:39,273] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:48:00,295] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:48:00,295] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:48:00,319] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:48:00,321] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:48:14,484] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:48:14,484] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:48:15,266] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:48:16,194] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:16,214] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:48:16,214] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:48:16,435] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:16,441] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:16,441] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:16,441] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:19,084] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:19,084] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:48:19,092] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:48:21,511] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:21,517] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:48:25,219] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:25,219] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:48:25,226] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:48:25,283] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:25,283] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:48:25,283] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:48:26,702] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:26,702] [pharmacy_app.views.py] [promo_view is called]
+[WARNING] [2024-09-24 17:48:30,828] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:30,828] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:48:30,831] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:48:33,194] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:33,199] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:48:45,570] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:45,572] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:48:45,576] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:48:45,631] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:45,631] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:48:45,631] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:48:48,008] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:48,059] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:48,059] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:48:48,063] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:48:49,490] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[WARNING] [2024-09-24 17:48:49,531] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:49,531] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:48:49,535] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:48:57,892] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:48:57,894] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:48:57,895] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:00,065] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:49:00,069] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:49:03,955] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:49:03,957] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:49:03,957] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:04,007] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:49:04,007] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:49:04,007] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:49:05,914] [pharmacy_proj.custom_middleware.py] [Europe/Istanbul time zone is activated]
+[INFO] [2024-09-24 17:49:05,914] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:49:05,936] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:49:05,938] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:49:20,227] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:49:20,227] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:49:20,956] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:21,850] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:21,875] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:49:21,878] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:49:22,153] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:22,162] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:22,175] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:22,180] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:24,156] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:24,160] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:49:24,160] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:26,621] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:26,628] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:49:32,810] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:32,812] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:49:32,815] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:32,870] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:32,870] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:49:32,872] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:49:34,402] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:34,477] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:34,477] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:49:34,484] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:49:35,462] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:35,462] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:49:35,462] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:39,587] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:39,587] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-24 17:49:42,350] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:42,351] [pharmacy_app.views.py] [shop_order_view is called]
+[INFO] [2024-09-24 17:49:42,356] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:49:42,408] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:42,411] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:49:42,414] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:49:43,748] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-24 17:49:43,793] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:43,793] [pharmacy_app.views.py] [user_view is called]
+[INFO] [2024-09-24 17:49:43,793] [pharmacy_app.views.py] [User is client]
+[WARNING] [2024-09-24 17:49:52,437] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:52,437] [pharmacy_app.views.py] [reviews_view is called]
+[WARNING] [2024-09-24 17:49:53,769] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:49:53,770] [pharmacy_app.views.py] [review_create_view is called]
+[WARNING] [2024-09-24 17:50:05,422] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:50:05,424] [pharmacy_app.views.py] [review_create_view is called]
+[INFO] [2024-09-24 17:50:05,426] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:50:05,479] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:50:05,479] [pharmacy_app.views.py] [reviews_view is called]
+[WARNING] [2024-09-24 17:50:17,282] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-24 17:50:17,282] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:50:17,310] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:50:17,310] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:50:26,468] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:50:26,470] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:50:27,203] [pharmacy_app.views.py] [Form has invalid data]
+[WARNING] [2024-09-24 17:50:35,355] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:50:35,355] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:50:36,272] [pharmacy_app.views.py] [Form has invalid data]
+[WARNING] [2024-09-24 17:50:43,452] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:50:43,459] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:50:44,289] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:50:45,094] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:50:45,095] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:50:45,098] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:50:45,354] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:50:45,354] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:50:45,354] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:50:45,366] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:50:47,823] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:50:47,823] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-24 17:50:47,826] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:50:50,409] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:50:50,411] [pharmacy_app.views.py] [reviews_view is called]
+[WARNING] [2024-09-24 17:50:51,652] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:50:51,655] [pharmacy_app.views.py] [review_create_view is called]
+[WARNING] [2024-09-24 17:51:01,953] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:51:01,953] [pharmacy_app.views.py] [review_create_view is called]
+[INFO] [2024-09-24 17:51:01,953] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:51:02,008] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:51:02,011] [pharmacy_app.views.py] [reviews_view is called]
+[INFO] [2024-09-24 17:53:57,586] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:54:01,551] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:54:01,558] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 17:54:01,624] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:54:01,626] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:54:01,628] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:54:12,307] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:54:12,307] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:54:12,322] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:54:22,557] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:54:22,558] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:54:22,560] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:54:32,822] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:54:32,822] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:54:32,822] [pharmacy_app.views.py] [User is client or not authenticated]
+[INFO] [2024-09-24 17:56:39,546] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 17:56:41,827] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:56:41,832] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 17:56:41,838] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 17:56:46,320] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:56:46,323] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-24 17:56:46,495] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:56:56,773] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:56:56,774] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-24 17:57:04,656] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:57:04,656] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-24 17:57:08,558] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:57:10,857] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:57:10,861] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-24 17:57:12,307] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:57:16,938] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:57:16,940] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-24 17:57:19,354] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[WARNING] [2024-09-24 17:57:22,103] [pharmacy_proj.custom_middleware.py] [Canada/Newfoundland time zone is activated]
+[INFO] [2024-09-24 17:57:22,104] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 17:57:22,132] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:57:22,132] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 17:57:25,910] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:57:25,910] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-24 17:57:26,750] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-24 17:57:27,552] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:57:27,554] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 17:57:28,674] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:31,540] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 17:57:31,540] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 17:57:31,582] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:31,707] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:34,131] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:34,338] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:35,750] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:35,969] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:38,869] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:38,910] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 17:57:39,125] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:02:28,923] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 18:02:33,255] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:02:33,255] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 18:02:33,349] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:02:33,349] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 18:02:34,479] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:02:36,734] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:02:39,239] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:09:08,065] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 18:09:11,810] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:09:11,810] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 18:09:11,897] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 18:09:11,897] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 18:09:13,014] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:09:15,176] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:09:26,895] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:09:32,953] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 18:09:32,976] [django.security.csrf.py] [Forbidden (CSRF token missing.): /html/]
+[WARNING] [2024-09-24 18:09:47,157] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:00:10,238] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-24 19:05:37,336] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:05:37,336] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 19:05:37,401] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:05:37,401] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 19:05:38,731] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:46,029] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:05:46,035] [pharmacy_app.views.py] [user_view is called]
+[WARNING] [2024-09-24 19:05:46,179] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:46,668] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:46,716] [django.request.py] [Not Found: /favicon.ico]
+[WARNING] [2024-09-24 19:05:48,902] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:49,134] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:50,564] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:05:50,799] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:06:57,089] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:06:57,132] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:06:57,333] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:06:58,623] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:06:58,816] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:07:23,363] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:07:23,415] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:07:23,626] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:14:16,210] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:14:16,210] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-24 19:14:16,248] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:14:16,248] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 19:14:17,084] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:14:20,419] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:27:20,281] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:31:40,385] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:21,869] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:41:21,871] [pharmacy_app.views.py] [home_view is called]
+[WARNING] [2024-09-24 19:41:22,600] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:24,737] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:41:24,737] [pharmacy_app.views.py] [logout_view is called]
+[WARNING] [2024-09-24 19:41:24,769] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:41:24,769] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-24 19:41:27,033] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-24 19:41:27,033] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-24 19:41:27,033] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-24 19:41:27,220] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:27,233] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:27,244] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:27,251] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:31,511] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:31,742] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:31,743] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:41:31,749] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:50:03,064] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-24 19:51:01,514] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 11:15:57,823] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-25 11:16:01,162] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 11:16:01,162] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-25 11:16:01,174] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 11:16:01,174] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-25 11:16:01,174] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-25 11:16:01,292] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:16:01,294] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:16:01,298] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:16:01,298] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:16:04,949] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:16:32,561] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:17:04,022] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:17:21,356] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:17:37,264] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:19:56,419] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:36:45,390] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:37:47,623] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 11:38:19,111] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:26:10,583] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-25 12:26:54,835] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:26:54,835] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-25 12:26:54,868] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:26:54,868] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-25 12:26:54,868] [pharmacy_app.views.py] [User is client or not authenticated]
+[INFO] [2024-09-25 12:45:36,204] [django.utils.autoreload.py] [Watching for file changes with StatReloader]
+[WARNING] [2024-09-25 12:45:44,080] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:45:44,081] [pharmacy_app.views.py] [default_view is called]
+[WARNING] [2024-09-25 12:45:44,142] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:45:44,142] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-25 12:45:44,144] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-25 12:46:33,915] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:46:33,916] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-25 12:46:34,098] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 12:46:40,912] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 12:47:01,149] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:01,150] [pharmacy_app.views.py] [questions_view is called]
+[WARNING] [2024-09-25 12:47:10,938] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 12:47:10,962] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:10,964] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-25 12:47:15,491] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:15,491] [pharmacy_app.views.py] [news_view is called]
+[WARNING] [2024-09-25 12:47:17,129] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:17,129] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-25 12:47:17,129] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-25 12:47:19,668] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[WARNING] [2024-09-25 12:47:19,684] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:19,684] [pharmacy_app.views.py] [login_view is called]
+[WARNING] [2024-09-25 12:47:27,169] [pharmacy_proj.custom_middleware.py] [Time zone set to default]
+[INFO] [2024-09-25 12:47:27,169] [pharmacy_app.views.py] [login_view is called]
+[INFO] [2024-09-25 12:47:27,866] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-25 12:47:30,678] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-25 12:47:30,700] [pharmacy_app.views.py] [home_view is called]
+[INFO] [2024-09-25 12:47:30,700] [pharmacy_app.views.py] [User is client or not authenticated]
+[WARNING] [2024-09-25 12:47:33,059] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-25 12:47:33,059] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-25 12:47:33,059] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-25 12:47:33,286] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:47:33,300] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:47:33,325] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:47:33,383] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:47:33,383] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:47:43,519] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-25 12:47:43,519] [pharmacy_app.views.py] [shop_view is called]
+[INFO] [2024-09-25 12:47:43,519] [pharmacy_app.views.py] [Form is valid]
+[WARNING] [2024-09-25 12:47:49,757] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[INFO] [2024-09-25 12:47:49,757] [pharmacy_app.views.py] [shop_order_view is called]
+[WARNING] [2024-09-25 12:51:32,354] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:54:36,419] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:54:36,681] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:54:36,686] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:54:36,691] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]
+[WARNING] [2024-09-25 12:54:36,725] [pharmacy_proj.custom_middleware.py] [Asia/Chongqing time zone is activated]

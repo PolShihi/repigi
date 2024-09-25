@@ -5,11 +5,11 @@
 {% if reviews %}
     <ul>
         {% for review in reviews %}
-            <li>
-                <h2>{{ review.full_name }}</h3>
-                <p>Rating: {{ review.mark }}</p>
-                <p>{{ review.text }}</p>
-                <p>Date Added: {{ review.date_added }}</p>
+            <li itemscope itemtype="http://schema.org/Review">
+                <h2 itemprop="author">{{ review.full_name }}</h3>
+                <p>Rating: <span itemprop="ratingValue">{{ review.mark }}</span></p>
+                <p itemprop="reviewBody">{{ review.text }}</p>
+                <p>Date Added: <time itemprop="datePublished" datetime="{{ review.date_added }}">{{ review.date_added }}</time></p>
             </li>
         {% endfor %}
     </ul>

@@ -4,9 +4,13 @@
 <h1>Question and Answer List</h1>
     {% for question in questions %}
         <hr>
-        <h2>{{ question.question }}</h2>
-        <p>{{ question.answer }}</p>
-        <p>Date Added: {{ question.date_added }}</p>
+        <details>
+            <summary>
+                {{ question.question }}
+            </summary>
+            <p>{{ question.answer }}</p>
+            <p><em>Date Added:</em> <time datetime="{{question.date_added}}">{{ question.date_added }}</time></p>
+        </details>
         <hr>
     {% empty %}
         <p>No questions.</p>

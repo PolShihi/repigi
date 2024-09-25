@@ -45,11 +45,6 @@ class ClientAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'user')
     list_filter = ('date_of_birth',)
     
-class CompanyInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'text')
-    list_display_links = ('id',)
-    list_editable = ('text',)
-    
 class QuestionAnswerAdmin(admin.ModelAdmin):
     list_display = ('id', 'question', 'date_added')
     list_display_links = ('id', 'question')
@@ -88,6 +83,30 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'summary', 'posted_date')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'posted_date')
+    
+class CompanyInfoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'phone', 'registration_number')
+    list_display_links = ('id',)
+    search_fields = ('name',)  
+    list_filter = ('registration_number',)
+    ordering = ('name',)  
+
+class CompanyHistoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'year', 'event')
+    list_display_links = ('id',)
+    search_fields = ('event',)  
+    ordering = ('year',)  
+
+class AddBannerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text',)
+    list_display_links = ('id',)
+    search_fields = ('text',)  
+
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'official_site')
+    list_display_links = ('id',)
+    search_fields = ('name',) 
+    ordering = ('name',) 
 
 admin.site.register(MedicationCategory, MedicationCategoryAdmin)
 admin.site.register(Medication, MedicationAdmin)
@@ -102,3 +121,6 @@ admin.site.register(Review, ReviewAdmin)
 admin.site.register(Vacancy, VacancyAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(News, NewsAdmin)
+admin.site.register(CompanyHistory, CompanyHistoryAdmin)
+admin.site.register(AddBanner, AddBannerAdmin)
+admin.site.register(Partner, PartnerAdmin)

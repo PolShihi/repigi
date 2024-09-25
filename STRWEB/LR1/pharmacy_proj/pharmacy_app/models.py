@@ -39,7 +39,7 @@ Methods:
         return self.company_name
     
     def get_list_of_orders(self):
-        return [order for medication in self.medication_set.all() for order in medication.order_set.all()]
+        return [order for medication in self.medication_set.all() for order in medication.order_set.all() if order.is_paid]
 
 class PharmacyDepartment(models.Model):
     """
@@ -58,7 +58,7 @@ Methods:
         return self.address
     
     def get_total_revenue(self):
-        return sum((order.get_total_cost() for order in self.order_set.all()))
+        return sum((order.get_total_cost() for order in self.order_set.all() if order.is_paid))
 
 class Medication(models.Model):
     """
@@ -94,10 +94,10 @@ Methods:
         return self.name
     
     def get_total_revenue(self):
-        return sum((order.get_total_cost() for order in self.order_set.all()))
+        return sum((order.get_total_cost() for order in self.order_set.all() if order.is_paid))
     
     def get_total_number_of_ordered(self):
-        return sum((order.quantity for order in self.order_set.all()))
+        return sum((order.quantity for order in self.order_set.all() if order.is_paid))
 
 class Employee(models.Model):
     """
@@ -160,19 +160,38 @@ Methods:
         return age
     
 class CompanyInfo(models.Model):
-    """
-Represents information about the company in the system.
-
-Attributes:
-    text (str): The text containing information about the company.
-
-Methods:
-    __str__(): Returns the text containing information about the company.
-"""
+    name = models.CharField(max_length=100)
     text = models.TextField()
+    logo = models.ImageField(upload_to='company/logo')
+    video = models.FileField(upload_to='company/video')
+    phone = models.CharField(max_length=20, default='')
+    registration_number = models.CharField(max_length=20)
+    certificate = models.TextField()
     
     def __str__(self):
         return self.text
+    
+class CompanyHistory(models.Model):
+    year = models.IntegerField()
+    event = models.TextField()
+    
+    def __str__(self):
+        return str(self.year) + ": " + self.event
+    
+class AddBanner(models.Model):
+    text = models.TextField()
+    banner = models.ImageField(upload_to='add_banners')
+
+    def __str__(self):
+        return self.text
+
+class Partner(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='partners/logos')
+    official_site = models.URLField(max_length=255)
+
+    def __str__(self):
+        return self.name
     
 class QuestionAnswer(models.Model):
     """
@@ -288,6 +307,7 @@ Methods:
     quantity = models.PositiveIntegerField()
     date_of_order = models.DateTimeField(auto_now_add=True)
     promo = models.ForeignKey(Promo, on_delete=models.SET_NULL, null=True, blank=True)
+    is_paid = models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.client) + ', ' + str(self.medication)

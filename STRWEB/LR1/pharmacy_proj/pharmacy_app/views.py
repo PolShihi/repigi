@@ -473,7 +473,7 @@ Returns:
         logger.info('User is employee')
         employee = Employee.objects.get(user_id=request.user.id)
         orders = [order for supplier in employee.suppliers.all()
-                  for order in supplier.get_list_of_orders()]
+                  for order in supplier.get_list_of_orders() if order.is_paid]
         total_revenue = sum([order.get_total_cost() for order in orders])
         return render(request, 'user_employee.html', {'employee': employee, 'orders': orders, 'total_revenue': total_revenue})
 
@@ -495,11 +495,24 @@ Returns:
     if not request.user.is_authenticated or is_in_groups('Client')(request.user):
         logger.info('User is client or not authenticated')
         news = None
+        company_info = None
+        add_banners = None
         try:
             news = News.objects.latest('posted_date')
         except News.DoesNotExist:
             logger.warning('There is no news')
-        return render(request, 'home.html', {'news': news, })
+            
+        try:
+            company_info = CompanyInfo.objects.first()
+        except CompanyInfo.DoesNotExist:
+            logger.warning('There is no company info')
+            
+        try:
+            add_banners = AddBanner.objects.all()
+        except AddBanner.DoesNotExist:
+            logger.warning('There is no add baners')
+            
+        return render(request, 'home.html', {'news': news, 'company_info': company_info, 'add_banners': add_banners})
 
     context = {}
     medications = list(Medication.objects.all())
@@ -835,6 +848,7 @@ def employee_delete_view(request, id):
 
 
 def news_view(request):
+    logger.info(news_view.__name__ + ' is called')
     news_list = News.objects.all()
     return render(request, 'news.html', {'news_list': news_list})
 
@@ -842,3 +856,19 @@ def news_view(request):
 def news_details_view(request, id):
     news = get_object_or_404(News, id=id)
     return render(request, 'news_details.html', {'news': news})
+
+@login_required
+def order_pay_view(request, id):
+    order = get_object_or_404(Order, pk=id)
+    order.is_paid = True
+    order.save()
+    return redirect('pharmacy:user')
+
+def about_view(request):
+    company_info = CompanyInfo.objects.first()
+    company_history = CompanyHistory.objects.all()
+    partners = Partner.objects.all()
+    return render(request, 'about.html', {'company_info': company_info, 'company_history': company_history, 'partners': partners})
+
+def html_stuff_view(request):
+    return render(request, 'html_stuff.html')

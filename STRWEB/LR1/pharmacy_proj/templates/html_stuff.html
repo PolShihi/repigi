@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}html stuff{% endblock title %}
+{% block content %}
+
+<section id="0">
+    <h2>Ссылки, якоря</h2>
+    <nav>
+        <ul>
+            <li><a href="#1" accesskey="a" >Семантические элементы и текст</a></li>
+            <li><a href="#2" target="_blank">Списки и таблица</a></li>
+            <li><a href="#3" tabindex="1">Фигуры, медиа и формы</a></li>
+            <li><a href="{% static 'anchor.png' %}" download="anchor.png">Скачать картинку якоря</a></li>
+        </ul>
+    </nav>
+
+</section>
+
+<section id="1">
+    <h2>Семантические элементы и текст</h2>
+
+    <br>
+
+    <p>
+        Однажды <strong>Максим</strong> проснулся рано утром. Солнце ярко светило, и его <b>игрушки</b> ждали его на полу. 
+        Но сегодня Максим чувствовал себя <em>не очень хорошо</em>. Он посмотрел на свои <i>любимые машинки</i> и 
+        подумал: «Не хочу <s>есть</s> играть». Вместо этого он просто <u>сидел на диване</u> и смотрел в окно. 
+        Его друзья уже собирались играть во дворе <small>за окном</small>, но Максим не мог с ними пойти. 
+        Он чувствовал себя <sub>очень грустным</sub> и <sup>одиноким</sup>. 
+        <mark>Слезы катились по его щекам</mark>, и он <strong>плакал</strong> так сильно, 
+        что даже мама подошла и спросила: «Что случилось, Максим?» 
+        Но он просто <em>пожал плечами</em> и продолжал смотреть в окно, мечтая о том, как здорово было бы 
+        <b>поиграть с друзьями</b>.
+    </p>
+
+    <br>
+
+    <h3>Примеры кода Python</h3>
+    <pre>
+        <code>
+            def news_view(request):
+                logger.info(news_view.__name__ + ' is called')
+                news_list = News.objects.all()
+                return render(request, 'news.html', {'news_list': news_list})
+        </code>
+    </pre>
+
+    <p>Функция вывела в файл логов: <samp>[INFO] [2024-09-22 19:25:08,035] [pharmacy_app.views.py] [news_view is called]</samp>.</p>
+    <p>Пользователь ввел: <kbd>ничего</kbd>. </p>
+    <p>объекты новостей хранятся в переменной <var>news_list</var>.</p>
+
+    <br>
+
+    <p contenteditable>Изменяемый текст...</p>
+
+    <br>
+
+    <p><abbr title="Hypertext Markup Language">HTML</abbr> — это <strong>язык</strong> разметки.</p>
+
+    <br>
+
+    <blockquote cite="https://ru.wikipedia.org/wiki/%D0%A6%D0%B8%D1%82%D0%B0%D1%82%D0%B0">
+        Цита́та (от лат. citare, citatum — провозглашать, приводить) — дословная выдержка из какого-либо текста чьей-либо речи.
+    </blockquote>
+
+    <br>
+
+    <q cite="https://ru.wikipedia.org/wiki/%D0%A6%D0%B8%D1%82%D0%B0%D1%82%D0%B0">
+        Цита́та (от лат. citare, citatum — провозглашать, приводить) — дословная выдержка из какого-либо текста чьей-либо речи.
+    </q>
+
+    <br>
+
+    <p hidden>Спрятанный абзац</p>
+
+    <br>
+
+    <p>День: <time datetime="2024-09-22">22 сентября 2024</time></p>
+
+    <br>
+
+    <p><dfn title="Семантика"><strong>Семантика</strong> — это значение, которое несет элемент.</dfn></p>
+
+    <br>
+
+    <h3>Фиксированный перевод строки</h3>
+    <p>
+        Природа с красоты своей <br>
+        Покрова снять не позволяет, <br>
+        И ты машинами не вынудишь у ней, <br>
+        Чего твой дух не угадает.
+    </p>
+
+    <br>
+
+    <h3>Потенциальный перевод строки</h3>
+    <p>
+        Природа с красоты своей <wbr>
+        Покрова снять не позволяет, <wbr>
+        И ты машинами не вынудишь у ней, <wbr>
+        Чего твой дух не угадает.
+    </p>
+
+    <br>
+</section>
+
+<hr>
+
+<section id="2">
+    <h2>Списки и таблица</h2>
+
+    <br>
+
+    <h3>Список без порядка</h3>
+    <ul type="circle" reversed>
+        <li>Порядок</li>
+        <li>Без</li>
+    </ul>
+
+    <br>
+
+    <h3>Порядочный список</h3>
+    <ol>
+        <li value="2">Первый элемент (Второй)</li>
+        <li value="1">Второй элемент (Первый)</li>
+    </ol>
+
+    <br>
+
+    <table border="1">
+        <caption>Таблица</caption>
+        <colgroup>
+            <col width="100">
+            <col width="25">
+        </colgroup>
+        <thead>
+            <tr>
+                <th id="Vegetables">Овощи</th>
+                <th id="Fruits">Фрукты</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td> футер 1</td>
+                <td> футер 2</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td headers="Vegetables">Огурец</td>
+                <td headers="Fruits">Помидор</td>
+            </tr>
+            <tr>
+                <td headers="Vegetables Fruits" colspan="2" rowspan="2">Овощефрукт</td>
+            </tr>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h3>Список определений</h3>
+    <dl>
+        <dt>Определение</dt>
+        <dd translate="yes">Второстепенный член предложения, обозначающий признак, качество, свойство предмета.</dd>
+        
+        <dt>Определение</dt>
+        <dd>Логическая операция установления смысла термина.</dd>
+    </dl>
+</section>
+
+<hr>
+
+<section id="3">
+    <h2>Фигуры, медиа и формы</h2>
+
+    <br>
+
+    <figure class="figure">
+        <img src="{% static 'image_ex.png' %}" alt="Пример картинки в фигуре" ismap>
+        <figcaption>Пример картинке в фигуре в надписи, с картинкой в качестве картинки</figcaption>
+    </figure>
+
+    <br>
+
+    <audio controls autoplay loop>
+        <source src="{% static 'garlic.mp3' %}" type="audio/mpeg">
+        Ваш браузер не поддерживает элемент
+    </audio>
+
+    <br>
+
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required value="Иван" readonly maxlength="8">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="age">Возраст:</label>
+            <input list="numberlist" type="number" id="age" name="age" min="0" placeholder="Возраст введите">
+        </div>
+
+        <br>
+
+        <datalist id="numberlist">
+            <option value="18" label="18" />
+            <option value="10">10</option>
+        </datalist>
+
+        <div>
+            <label for="color">Цвет:</label>
+            <input type="color" id="color" name="color">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="file">Файл:</label>
+            <input type="file" id="file" name="file">
+        </div>
+
+        <br>
+
+        <div>
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" cols="10"></textarea>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="options">Опции:</label>
+            <select id="options" name="options">
+                <option value="1" selected label="sound">Звук</option>
+                <optgroup label="группа опций"> 
+                    <option value="3">Картинка</option>
+                    <option value="5">и не только</option>
+                </optgroup>
+                <option value="2">Видео</option>
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+            <input type="radio" name="direction" value="left" checked>лево<br>
+            <input type="radio" name="direction" value="right">право<br>
+        </div>
+
+        <br>
+
+        <fieldset title="Мышка информации">
+            <legend>Информация о мышке</legend>
+            Модель: <input type="text" name="usr"><br>
+        </fieldset>
+
+        <br>
+
+        <div>
+            <button type="submit">Отправить</button>
+        </div>
+
+        <br>
+
+        <div>
+            <button type="reset">Очистить</button>
+        </div>
+
+        <br>
+            
+    </form>
+
+    <br>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GT77G1loHsI?si=k8A30_G6a_-g0ql1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts">Не прогрузилось</iframe>
+</section>
+{% endblock content %}
