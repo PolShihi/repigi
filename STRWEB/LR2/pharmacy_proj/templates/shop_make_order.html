@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block styles %}
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}Order{% endblock title %}
+{% block content %}
+<h2>Make order</h2>
+<hr>
+<h3>{{medication.name}}</h3>
+<img class="image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
+<p style="font-weight: bold;">{{medication.cost}}$</p>
+<p>{{medication.description}}</p>
+<p>Instruction: {{medication.instruction}}</p>
+<p>Categories: 
+{% for category in medication.categories.all %}
+{{category.name}}, 
+{% empty %}
+no
+{% endfor %}
+</p>
+<hr>
+<form method="POST">
+    {% csrf_token %}
+<table>
+    {{ form.as_table }}
+</table>
+<input type="submit" value="Buy">
+</form>
+{% endblock content %}

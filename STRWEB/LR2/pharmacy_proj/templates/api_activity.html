@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Activity{% endblock title %}
+{% block content %}
+<h2>Activity</h2>
+<p>Random activity is displayed here</p>
+<br>
+{% if error %}
+<p style='font-weight: bold;color: red;'>Error: {{error}}<p>
+{% else %}
+<p><strong>Activity:</strong> {{activity}}</p>
+{% endif %}
+<a href="{% url 'pharmacy:activity' %}">
+    <button>Get new</button>
+</a>
+{% endblock content %}

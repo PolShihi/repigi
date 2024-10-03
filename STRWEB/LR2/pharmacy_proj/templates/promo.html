@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Promo{% endblock title%}
+{% block content %}
+<h1>Promo</h1>
+<h2>Active</h2>
+{% if promo_active %}
+    <ul>
+        {% for promo in promo_active %}
+            <li>
+                <h3>{{ promo.promo }}</h1>
+                <p>description: {{ promo.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No active promotional codes.</p>
+{% endif %}
+<hr>
+<h2>Archived</h2>
+{% if promo_archived %}
+    <ul>
+        {% for promo in promo_archived %}
+            <li>
+                <h3>{{ promo.promo }}</h1>
+                <p>description: {{ promo.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No archived promotional codes.</p>
+{% endif %}
+{% endblock content %}

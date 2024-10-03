@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock title %}
+{% block content %}
+<h1>About as</h1>
+
+<hr>
+
+{% if company_info %}
+<section>
+    <p><strong>Company name: </strong>{{ company_info.name }}</p>
+    <p><strong>logo:</strong></p>
+    <div>
+        <img src="{{ company_info.logo.url }}" alt="{{ company_info.name }} logo" style="width: 300px; height: 300px">
+    </div>
+    <p><strong>Phone:</strong> {{ company_info.phone }}</p>
+    <p><strong>Registration Number:</strong> {{ company_info.registration_number }}</p>
+    <p><strong>Certificate: </strong></p>
+    <div style="border: 2px solid black; padding: 5px">
+        {{ company_info.certificate|safe }}
+    </div>
+
+    <p><strong>Company video:</strong></p>
+    <video width="600" controls muted>
+        <source src="{{ company_info.video.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+<br>
+<hr>
+<br>
+{% endif %}
+
+{% if company_history %}
+<section>
+    <h2>Our History</h2>
+    <ul>
+        {% for history in company_history %}
+            <li><strong><time>{{ history.year }}</time>:</strong> {{ history.event }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<br>
+<hr>
+<br>
+{% endif %}
+
+{% if partners %}
+<section>
+    <h2>Our Partners</h2>
+    <ul>
+        {% for partner in partners %}
+            <li>
+                <a href="{{ partner.official_site }}" target="_blank">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
+                    <p>{{ partner.name }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+{% endblock content %}

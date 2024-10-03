@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Suppliers{% endblock title %}
+{% block content %}
+<h1>Suppliers</h1>
+{% if suppliers %}
+<ul>
+    {% for supplier in suppliers %}
+        <li>
+            <hr>
+            <p><b>company name:</b>{{ supplier.company_name }}</p>
+            <p><b>phone:</b>{{ supplier.phone }}</p>
+            <p><b>address:</b>{{ supplier.address }}</p>
+            <div>
+                <a href="{% url "pharmacy:supplier_delete" id=supplier.id %}">
+                    <button>delete</button>
+                </a>
+                <a href="{% url "pharmacy:supplier_update" id=supplier.id %}">
+                    <button>update</button>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<hr>
+<p>No suppliers</p>
+{% endif %}
+<hr>
+<a href="{% url "pharmacy:supplier_create" %}">
+    <button>add</button>
+</a>
+{% endblock content %}

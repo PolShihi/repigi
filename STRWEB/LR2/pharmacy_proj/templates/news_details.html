@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ news.title }}{% endblock title %}
+{% block content %}
+<h1>{{ news.title }}</h1>
+<time>{{ news.posted_date }}</time>
+<img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:400px;">
+<p>{{ news.content }}</p>
+<a href="{% url 'pharmacy:news' %}">Back to News List</a>
+{% endblock content %}

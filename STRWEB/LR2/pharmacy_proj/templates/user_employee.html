@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block styles %}
+.frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}User{% endblock title %}
+{% block content %}
+{% load tz %}
+<h2>Employee Profile</h2>
+<p><strong>Name:</strong> {{ employee.user.get_full_name }}</p>
+<img class="image" src="{{ employee.photo.url }}" alt="{{employee.user.get_full_name}} image">
+<p><strong>Position:</strong> {{ employee.position }}</p>
+<p><strong>Email:</strong> {{ employee.user.email }}</p>
+<p><strong>Timezone:</strong> {{ employee.timezone_info }}</p>
+<hr>
+<h2>List of your suppliers</h2>
+{% for supplier in employee.suppliers.all %}
+<div class="frame">
+    <p><strong>Company name:</strong> {{supplier.company_name}}</p>
+    <p><strong>Phone:</strong> {{supplier.phone}}</p>
+    <p><strong>Address:</strong> {{supplier.address}}</p>
+</div>
+{% empty %}
+<p>No suppliers.</p>
+{% endfor %}
+<hr>
+<h2>List of orders from your suppliers</h2>
+<p>Total revenue: {{total_revenue}}$<p>
+{% for order in orders %}
+<div class="frame">
+    <p><strong>Client name:</strong> {{order.client.user.get_full_name}}</p>
+    <p><strong>Client phone:</strong> {{order.client.phone}}</p>
+    <p><strong>Supplier:</strong> {{order.medication.supplier}}</p>
+    <p><strong>Medication name:</strong> {{order.medication.name}}</p>
+    <img class="image" src="{{ order.medication.photo.url }}" alt="{{order.medication.name}} image">
+    <p><strong>Medication description:</strong> {{order.medication.description}}</p>
+    <p><strong>Total cost:</strong> {{order.get_total_cost}}$</p>
+    <p><strong>Quantity:</strong> {{order.quantity}}</p>
+    <p><strong>Date of order (your timezone):</strong> {{order.date_of_order}}</p>
+    <p><strong>Date of order (utc):</strong> {{order.date_of_order|utc}}</p>
+    <p><strong>Date of order (client timezone)</strong> {{order.date_of_order|timezone:order.client.timezone_info }}</p>
+    <p><strong>Pharmacy department:</strong> {{order.department}}</p>
+</div>
+{%empty%}
+<p>No orders.</p>
+{% endfor %}
+{% endblock content %}
