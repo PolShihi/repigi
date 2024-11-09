@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Departments{% endblock title %}
+{% block content %}
+<h1>Pharmacy Departments</h1>
+{% if departments %}
+<ul>
+    {% for department in departments %}
+        <li>
+            <hr>
+            <p><b>department adress:</b> {{ department.address }}</p>
+            <div>
+                <a href="{% url "pharmacy:pharmacy_department_delete" id=department.id %}">
+                    <button>delete</button>
+                </a>
+                <a href="{% url "pharmacy:pharmacy_department_update" id=department.id %}">
+                    <button>update</button>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<hr>
+<p>No departments</p>
+{% endif %}
+<hr>
+<a href="{% url "pharmacy:pharmacy_department_create" %}">
+    <button>add</button>
+</a>
+{% endblock content %}

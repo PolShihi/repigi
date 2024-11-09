@@ -1,0 +1,29 @@
+.news
+    padding: 0px 10px 25px
+
+    &__time
+        text-align: center
+        margin-top: 10px
+
+    &__image
+        display: block
+        width: 70%
+        min-width: 360px
+        margin: 20px auto 0px
+
+    &__content
+        margin-top: 25px
+        column-count: 3
+        column-gap: 40px
+        column-rule: 1px solid transparentize($text_color, 0.8)
+        text-align: justify
+        text-indent: 10px
+        &::first-line
+            color: $primary_color
+        &::first-letter
+            font-weight: 800
+
+@media (max-width: 860px)
+    .news
+        &__content 
+            column-count: 2

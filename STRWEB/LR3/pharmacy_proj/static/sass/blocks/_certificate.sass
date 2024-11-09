@@ -1,0 +1,107 @@
+.certificate
+    position: relative
+    max-width: 741px
+    margin: 10px auto 0px
+    padding: 5px 10px
+    border-width: 25px
+    border-style: solid
+    border-image: url("../border.png") 40 round
+    background-image: url("../transperent_logo.png")
+    background-size: contain
+    background-position: center
+    background-repeat: no-repeat
+    > *
+        text-align: center
+    *
+        font-family: cursive
+    hr
+        background: rgb(0, 0, 0)
+        height: 3px
+        margin-top: 100px
+
+    &__registry
+        text-transform: uppercase
+        font-size: 2em
+
+    &__header
+        margin-top: 7px
+        font-size: 2.5em
+        font-weight: bold
+        font-variant: small-caps
+        background: linear-gradient(rgb(255, 0, 0), rgb(0, 0, 0))
+        background-clip: text
+        -webkit-text-fill-color: transparent
+
+        &-details
+            margin-top: 3px
+            text-transform: uppercase
+
+    &__main-text
+        margin-top: 60px
+        font-size: 1.2em
+        span[title="this company"]
+            font-size: 1.1em
+            font-family: 'Cinzel'
+            letter-spacing: 4px
+            color: black
+
+    &__expired-date
+        margin-top: 110px
+        text-align: left
+        font-weight: bold
+        text-decoration: underline
+
+    &__signature
+        margin-top: 90px
+        position: relative
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+
+        p
+            position: relative
+            z-index: 3
+
+        &-seal
+            position: absolute
+            left: 20%
+            top: -50px
+            width: 130px
+            transform: rotate(30deg)
+            z-index: 1
+
+        &-autograph
+            position: absolute
+            left: 25%
+            top: -20px
+            width: 150px
+            z-index: 2
+
+    &__footer
+        margin-top: 20px
+        display: flex
+
+    &__company-logo
+        width: 200px
+        height: 170px
+        position: relative
+        overflow: hidden
+        img
+            position: relative
+            top: -15px
+            width: 190px
+
+    &__contacts
+        margin-left: 20px
+
+        &-address, &-telephone
+            text-align: left
+            strong
+                font-weight: bold
+                font-style: italic
+                
+        &-telephone
+            margin-top: 5px
+
+.about-section__certificate
+    margin-top: 60px

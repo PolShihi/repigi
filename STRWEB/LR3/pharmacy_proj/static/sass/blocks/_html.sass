@@ -1,0 +1,60 @@
+.html
+    padding: 0 10px 15px
+
+    ul, ol
+        margin-left: 1em
+        padding-left: 20px
+        li
+            &:first-child
+                outline: solid 1px red
+            &:nth-child(2n)
+                outline: solid 1px green
+            &:last-child
+                outline: solid 1px blue
+
+    a
+        text-decoration: none
+
+        &:link
+            color: $additional_color
+        &:visited
+            opacity: 0.3
+        &:active
+            color: $background_color
+            background-color: $text_color
+        &:focus
+            border: 1px solid black
+            border-radius: 5px
+        &:hover
+            text-decoration: underline
+
+    q:lang(en)
+        quotes: "« " " »"
+
+    q:lang(ru)
+        quotes: "\201C" "\201D" "\2018" "\2019"
+
+    blockquote
+        word-wrap: break-word
+
+        &::before
+            content: 'before.'
+
+        &::after
+            content: 'after.'
+
+    table
+        margin: 0 auto
+        border-collapse: collapse
+
+        caption
+            font-weight: 900
+
+        td, tr, th
+            border: 1px solid $additional_color
+            padding: 10px
+            vertical-align: middle
+            text-align: left
+
+        td:empty
+            background-color: $primary_color

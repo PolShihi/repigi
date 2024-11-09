@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Reviews{% endblock title%}
+{% block content %}
+<section class="reviews">
+    <h1 class="reviews__title">Reviews</h1>
+    {% if reviews %}
+        <ul class="reviews__items">
+            {% for review in reviews %}
+                <li class="reviews__item" itemscope itemtype="http://schema.org/Review">
+                    <h2 class="reviews__item-author" itemprop="author">{{ review.full_name }}</h2>
+
+                    <p class="reviews__item-content" itemprop="reviewBody">{{ review.text }}</p>
+
+                    <p class="reviews__item-rating"><strong>Rating:</strong> <span itemprop="ratingValue">{{ review.mark }}</span></p>
+
+                    <p class="reviews__item-date"><time itemprop="datePublished" datetime="{{ review.date_added }}">{{ review.date_added }}</time></p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews available.</p>
+    {% endif %}
+    <a class="button reviews__button" href="{% url 'pharmacy:review_create' %}">Add Review</a>
+</section>
+{% endblock content %}

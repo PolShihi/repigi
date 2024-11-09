@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Categories{% endblock title %}
+{% block content %}
+<h1>Medication categories</h1>
+{% if categories %}
+<ul>
+    {% for category in categories %}
+        <li>
+            <hr>
+            <p><b>name:</b>{{ category.name }}</p>
+            <p><b>description:</b>{{ category.description }}</p>
+            <div>
+                <a href="{% url "pharmacy:medication_category_delete" id=category.id %}">
+                    <button>delete</button>
+                </a>
+                <a href="{% url "pharmacy:medication_category_update" id=category.id %}">
+                    <button>update</button>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<hr>
+<p>No categories</p>
+{% endif %}
+<hr>
+<a href="{% url "pharmacy:medication_category_create" %}">
+    <button>add</button>
+</a>
+{% endblock content %}

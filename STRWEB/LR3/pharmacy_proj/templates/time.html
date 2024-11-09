@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Time{% endblock title %}
+{% block content %}
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
+<form action="{% url 'pharmacy:time' %}" method="POST">
+    {% csrf_token %}
+    <label for="timezone">Time zone:</label>
+    <select name="timezone">
+        {% for tz_value, tz_display in timezones %}
+        <option value="{{ tz_value }}"{% if tz_value == TIME_ZONE %} selected{% endif %}>{{ tz_display }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Set">
+</form>
+<p><strong>Now (your timezone):</strong> {{ now }}</p>
+<p><strong>Now (utc):</strong> {{ now|utc }}</p>
+{% autoescape off %}
+{{calendar}}
+{% endautoescape %}
+{% endblock content %}

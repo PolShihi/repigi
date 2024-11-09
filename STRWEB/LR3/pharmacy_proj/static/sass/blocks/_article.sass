@@ -1,0 +1,80 @@
+.article
+    border: solid transparentize($text_color, 0.5) 2px
+    border-radius: 30px
+    padding: 7px 16px 10px
+    margin-top: 20px
+
+    &__title
+        font-weight: 500
+
+    &__content
+        display: flex
+        justify-content: space-between
+        align-items: flex-start
+        margin-top: 18px
+
+    &__image
+        display: block
+        width: 45%
+        height: 320px
+
+    &__text
+        width: 35%
+
+    &__summary
+        display: -webkit-box
+        -webkit-box-orient: vertical
+        -webkit-line-clamp: 2
+        overflow: hidden
+        text-overflow: ellipsis
+        line-height: 1.1em
+        height: calc(2 * 1.1em)
+
+    &__time
+        text-align: right
+        font-weight: 700
+        font-size: 1.1em
+
+.about-section__article
+    background-color: $background_color
+    .article__title
+        font-size: 1.15em
+    .article__image
+        height: 100px
+
+
+
+@media (max-width: 1300px)
+    .article
+        &__image
+            height: 270px
+
+
+@media (max-width: 1050px)
+    .article
+        &__image
+            height: 220px
+
+    .about-section__article
+            .article__title
+                font-size: 1.5em
+            .article__image
+                height: 220px
+
+@media (max-width: 860px)
+    .article
+        &__image
+            height: 170px
+
+    .about-section__article
+            .article__image
+                height: 170px
+
+@media (max-width: 575px)
+    .article
+        &__image
+            height: 120px
+
+    .about-section__article
+            .article__image
+                height: 120px

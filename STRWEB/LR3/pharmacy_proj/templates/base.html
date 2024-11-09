@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Heorhi">
+    <meta name="description" content="Pharmacy shop">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock head %}
+    <style>
+        {% block styles %}{% endblock %}
+    </style>
+</head>
+<body>
+    <section class="navigation">
+        <div class="container">
+            <header>
+                <nav>
+                    <ul class="navigation__items">
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:home'%}">Home</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:info'%}">Info</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:news'%}">News</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:shop'%}">Shop</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:questions'%}">Questions</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:contacts'%}">Contacts</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:policy'%}">Policy</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:about'%}">About</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:html_stuff'%}">HTML</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:vacancies'%}">Vacancies</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:reviews'%}">Reviews</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:promo'%}">Promo</a></li>
+                        {% if user.is_superuser %}
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:medication_category_list'%}">Categories</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:pharmacy_department_list'%}">Departments</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:supplier_list'%}">Suppliers</a></li>
+                        {% endif %}
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:cat'%}">Random cat fact</a></li>
+                        <li class="button navigation__button" ><a href="{% url 'pharmacy:activity'%}">Random activity</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="button navigation__button navigation__button_red"><a href="{% url 'pharmacy:user'%}">{{request.user.username}}</a></li>
+                        <li class="button navigation__button navigation__button_blue"><a  href="{% url 'pharmacy:logout'%}">Logout</a></li>
+                        {% else %}
+                        <li class="button navigation__button navigation__button_blue"><a href="{% url 'pharmacy:login'%}">Login</a></li>
+                        {% endif %}
+                        <li class="button navigation__button navigation__button_green"><a href="{% url "pharmacy:time"%}">Current Timezone:
+                            {% if request.session.django_timezone %}
+                            {{request.session.django_timezone}}
+                            {% else %}
+                            UTC
+                            {% endif %}
+                        </a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    </section>
+    <main class="content">
+        <div class="container">
+            <div class="content__main">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy;
+    </footer>
+</body>
+</html>

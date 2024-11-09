@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Shop{% endblock title %}
+{% block content %}
+
+{% if medications %}
+    <section class="shop">
+        <h1>Shop</h1>
+        <form method="GET" class="form">
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Search">
+        </form>
+        <ul class="shop__items">
+            {% for medication in medications %}
+            <li class="shop__item">
+                <h2 class="shop__item-name">{{medication.name}}</h2>
+                <img class="shop__item-image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
+                <p class="shop__item-cost">{{medication.cost}}$</p>
+                <p class="shop__item-descr">{{medication.description}}</p>
+                <p class="shop__item-instr"><span>Instruction:</span> {{medication.instruction}}</p>
+                <a class="button shop__button" href="{% url "pharmacy:shop_order" id=medication.id %}">Order Now
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% else %}
+    <p>No medication.</p>
+{% endif %}
+
+{% endblock content %}

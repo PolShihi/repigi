@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{%block title%}Login{%endblock title%}
+{%block content%}
+<section class="login">
+    <h1>Login</h1>
+    <form method="POST" class="form">
+            {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Login">
+    </form>
+
+    <p class="login__create">Don't have an account? <a href="{% url 'pharmacy:register' %}">Create one</a></p>
+</section>
+{%endblock content%}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block styles %}
+.order-frame {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.medicine-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+{% endblock styles %}
+{% block title %}User{% endblock title %}
+{% block content %}
+
+<section class="profile">
+    <h1 class="profile__title">Client Profile</h1>
+    
+    <hr>
+    
+    <div class="profile__account">
+        <p class="profile__name"><strong>Name:</strong> {{ client.user.get_full_name }}</p>
+        <p class="profile__email"><strong>Email:</strong> {{ client.user.email }}</p>
+        <p class="profile__timezone"><strong>Timezone:</strong> {{ client.timezone_info }}</p>
+    </div>
+    
+    <h2 class="profile__subtitle">Order list</h2>
+    
+    <ul class="profile__items">
+        {% for order in client.order_set.all %}
+        {% if not order.is_paid %}
+        <li class="profile__item">
+            <h3 class="profile__item-name">{{order.medication.name}}</h3>
+            <img class="profile__item-image" src="{{ order.medication.photo.url }}" alt="{{order.medication.name}} image">
+            <p class="profile__item-description"><strong>Medication description:</strong> {{order.medication.description}}</p>
+            <p class="profile__item-cost"><strong>Total cost:</strong> <span>{{order.get_total_cost}}$</span></p>
+            <p class="profile__item-quantity"><strong>Quantity:</strong> {{order.quantity}}</p>
+            <p class="profile__item-department"><strong>Pharmacy department:</strong> {{order.department}}</p>
+    
+            <a class="button profile__button" href="{% url "pharmacy:order_pay" id=order.id %}">pay order</a>
+        </li>
+        {% endif %}
+        {%empty%}
+        <p>No orders.</p>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    
+    <h2 class="profile__subtitle">Paid orders list</h2>
+    
+    <ul class="profile__items profile__items_paid">
+        {% for order in client.order_set.all %}
+        {% if order.is_paid %}
+        <li class="profile__item">
+            <h3 class="profile__item-name">{{order.medication.name}}</h3>
+            <img class="profile__item-image" src="{{ order.medication.photo.url }}" alt="{{order.medication.name}} image">
+
+            <p class="profile__item-description"><strong>Medication description:</strong> {{order.medication.description}}</p>
+            <p class="profile__item-cost"><strong>Total cost:</strong> <span>{{order.get_total_cost}}$</span></p>
+            <p class="profile__item-quantity"><strong>Quantity:</strong> {{order.quantity}}</p>
+            <p class="profile__item-department"><strong>Pharmacy department:</strong> {{order.department}}</p>
+        </li>
+        {% endif %}
+        {%empty%}
+        <p>No paid orders.</p>
+        {% endfor %}
+    </ul>
+</section>
+
+{% endblock content %}
