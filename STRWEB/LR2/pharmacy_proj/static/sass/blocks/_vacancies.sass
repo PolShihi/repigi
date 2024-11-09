@@ -1,0 +1,45 @@
+.vacancies
+    padding: 0 10px 15px
+
+    &__items
+        list-style: none
+        margin-top: 15px
+        overflow: auto
+
+    &__item
+        float: left
+        width: 550px
+        border: solid $additional_color 1px
+        border-radius: 10px
+        padding: 5px 6px
+        margin-left: 20px
+        margin-top: 10px
+
+        &-position
+            font-size: 1.15em
+            margin-top: 10px
+
+        p:not(.vacancies__items-position)
+            margin-top: 6px
+
+        &-date
+            margin-top: 13px
+            font-size: 1.1em
+            text-align: right
+            
+
+@media (max-width: 1300px)
+    .vacancies
+        &__item
+            width: 440px
+
+@media (max-width: 1050px)
+    .vacancies
+        &__item
+            width: 360px
+
+@media (max-width: 860px)
+    .vacancies
+        &__item
+            margin-left: 0px
+            width: 100%

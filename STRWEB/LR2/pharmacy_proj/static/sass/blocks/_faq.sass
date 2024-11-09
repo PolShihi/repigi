@@ -1,0 +1,32 @@
+.faq
+    padding: 0px 10px 15px
+
+    &__container
+        border: solid 2px transparentize($text_color, 0.5)
+        border-radius: 15px/15px
+        padding: 10px 10px
+        margin: 20px 10px 0px
+        transition: all 0.5s
+
+        &[open]
+            border-color: $text_color
+            transform: scale(1.02)
+
+    &__question
+        font-weight: 500
+
+        &::marker
+            color: $additional_color
+
+    &__answer
+        margin: 7px 17px 0px
+        &::first-letter
+            color: $primary_color
+            font-weight: 700
+
+    &__time
+        margin: 0px 17px
+        text-align: right
+
+
+

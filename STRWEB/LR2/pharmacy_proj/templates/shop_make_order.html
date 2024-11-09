@@ -1,34 +1,30 @@
 {% extends "base.html" %}
-{% block styles %}
-.image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-{% endblock styles %}
 {% block title %}Order{% endblock title %}
 {% block content %}
-<h2>Make order</h2>
-<hr>
-<h3>{{medication.name}}</h3>
-<img class="image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
-<p style="font-weight: bold;">{{medication.cost}}$</p>
-<p>{{medication.description}}</p>
-<p>Instruction: {{medication.instruction}}</p>
-<p>Categories: 
-{% for category in medication.categories.all %}
-{{category.name}}, 
-{% empty %}
-no
-{% endfor %}
-</p>
-<hr>
-<form method="POST">
-    {% csrf_token %}
-<table>
-    {{ form.as_table }}
-</table>
-<input type="submit" value="Buy">
-</form>
+
+<section class="profile">
+    <div class="profile__item">
+        <h1 class="profile__item-name">{{medication.name}}</h1>
+        <img class="profile__item-image" src="{{ medication.photo.url }}" alt="{{medication.name}} image">
+        <p class="profile__item-cost"><span>{{medication.cost}}$</span></p>
+        <p class="profile__item-description">{{medication.description}}</p>
+        <p class="profile__item-instruction"><strong>Instruction:</strong> {{medication.instruction}}</p>
+        <p class="profile__item-categories"><strong>Categories:</strong>
+        {% for category in medication.categories.all %}
+        {{category.name}},
+        {% empty %}
+        no
+        {% endfor %}
+        </p>
+    </div>
+
+    <form method="POST" class="form">
+        {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Buy">
+    </form>
+</section>
+
 {% endblock content %}

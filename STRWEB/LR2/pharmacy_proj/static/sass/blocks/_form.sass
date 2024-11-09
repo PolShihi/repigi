@@ -1,0 +1,41 @@
+.form
+    input:disabled
+        opacity: 0.2
+
+
+    input[type="text"], input[type="number"], input[type="password"], input[type="email"], select, textarea
+        font-family: monospace
+        transition: transform .2s
+        background-color: white
+        border: solid 1px $additional_color
+        border-radius: 5px
+        line-height: 1.3em
+
+        &:focus, &:focus-visible
+            outline: none
+            border-color: black
+            border-width: 2px
+            transform: scale(1.01)
+
+        &:invalid, &:out-of-range
+            border-color: $secondary_color
+
+        &:required
+            outline: dashed 1px $text_color
+            outline-offset: -1px
+
+        &:placeholder-shown
+            background-color: $secondary_color
+
+    input[type="checkbox"], input[type="radio"]
+        accent-color: $primary_color
+        transition: transform .2s
+
+        &:checked
+            transform: scale(1.2)
+        
+
+
+
+
+

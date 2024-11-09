@@ -1,0 +1,65 @@
+@import "base/fonts"
+@import "base/variables"
+@import "base/animation"
+
+*
+    font-family: Montserrat
+    box-sizing: border-box
+    padding: 0px
+    margin: 0px
+    color: $text_color
+    &::selection
+        color: $background_color
+        background-color: rgb(0, 0, 0)
+
+h1, h2, h3, h4, h5, h6
+    text-align: center
+
+time
+    font-family: monospace
+
+body
+    background-color: $background_color
+    background-image: url("../krestik.webp")
+    background-size: 30px 30px
+
+.container
+    max-width: 1240px
+    margin: 0 auto
+
+.content
+    margin: 10px 0px
+
+    &__main
+        position: relative
+        background-color: $background_color
+        padding: 5px 0px 5px
+        box-shadow: transparentize($additional_color, 0.7) 0px 19px 38px, transparentize($additional_color, 0.78) 0px 15px 12px
+        border-radius: 5px
+
+@import "blocks/company-name"
+@import "blocks/button"
+@import "blocks/article"
+@import "blocks/form"
+@import "blocks/navigation"
+@import "blocks/certificate"
+@import "blocks/shop"
+@import "blocks/partners"
+@import "blocks/about-section"
+@import "blocks/company-history"
+@import "blocks/add-section"
+@import "blocks/news-list-section"
+@import "blocks/news"
+@import "blocks/policy"
+@import "blocks/info"
+@import "blocks/faq"
+@import "blocks/contacts"
+@import "blocks/vacancies"
+@import "blocks/reviews"
+@import "blocks/promo"
+@import "blocks/profile"
+@import "blocks/login"
+@import "blocks/html"
+@import "blocks/pill"
+@import "blocks/scene"
+@import "media"

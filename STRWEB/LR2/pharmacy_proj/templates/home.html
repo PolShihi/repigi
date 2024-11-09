@@ -1,40 +1,127 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<p><strong>Welcome to the home page</strong></p>
-<hr>
-{% if company_info %}
-<section>
-    <h2>Logo of company "{{company_info.name}}"</h2>
-    <img src="{{ company_info.logo.url }}" alt="{{company_info.name}} image" style="width: 300px; height: 300px;">
+<section class="about-section">
+    <h1 class="about-section__title">Welcome to the home page of <span class="company-name company-name_header">Pharmacy</span> </h1>
+
+    {% if company_info %}
+        <img class="about-section__logo" src="{{ company_info.logo.url }}" alt="{{company_info.name}} image" style="width: 300px; height: 300px;">
+    {% endif %}
+
 </section>
-<hr>
-{% endif %}
+
 {% if add_banners %}
-<section>
-    <h2>Add banners</h2>
-    <ul>
+<section class="add-section">
+    <h2 class="add-section__title">See this!</h2>
+    <ul class="add-section__items">
         {% for banner in add_banners %}
-        <li>
-            <p>{{ banner.text }}</p>
-            <div><img src="{{ banner.banner.url }}" alt="image" style="width: 400px; height: 300px;"></div>
+        <li class="add-section__item">
+            <img class="add-section__item-image" src="{{ banner.banner.url }}" alt="image">
+            <p class="add-section__item-text">{{ banner.text }}</p>
         </li>
         {% endfor %}
     </ul>
 </section>
-<hr>
 {% endif %}
+
+{% if partners %}
+<section class="partners">
+    <h2 class="partners__title">Our Partners</h2>
+    
+    <ul class="partners__items">
+        {% for partner in partners %}
+            <li class="partners__item">
+                <a class="partners__item-container-image" href="{{ partner.official_site }}" target="_blank">
+                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
 {% if news %}
-<section>
-    <h2>Latest news</h2>
-    <hr>
-    <div>
-        <h1>{{ news.title }}</h1>
-        <time>{{ news.posted_date }}</time>
-        <img src="{{ news.image.url }}" alt="{{ news.title }}" style="width:400px;">
-        <p>{{ news.content }}</p>
+<section class="about-section about-section_news">
+    <h2 class="about-section__title_news">Latest news</h2>
+
+    <article class="article about-section__article">
+        <h3 class="article__title">{{ news.title }}</h3>
+    
+        <div class="article__content">
+            <img class="article__image" src="{{ news.image.url }}" alt="{{ news.title }}">
+            <div class="article__text">
+                <p class="article__summary">{{ news.summary }}</p>
+                <a class="button article__button" href="{% url 'pharmacy:news_details' news.id %}">Read More</a>
+            </div>
+        </div>
+    
+        <p class="article__time"><time>{{ news.posted_date }}</time>
+        </p>
+    </article>
+</section>
+
+<section class="pill">
+    <div class="pill__main">
+        <div class="pill__text">
+            <div class="company-name pill__company-name">{{company_info.name}}</div>
+        </div>
     </div>
 </section>
-<hr>
+
+<div class="scene">
+    <div class="scene__top">
+        <div class="scene__pharmacy">
+            <div class="scene__pharmacy-cross">+</div>
+            <div class="scene__pharmacy-window">
+                <div class="scene__salesman">
+                    <div class="scene__salesman-head">
+                        <div class="scene__salesman-eye"></div>
+                        <div class="scene__salesman-eye"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene__pharmacy-wood"></div>
+        </div>
+
+        <div class="scene__customer">
+            <div class="scene__customer-leg scene__customer-leg_left">
+                <div class="scene__customer-foot"></div>
+            </div>
+            <div class="scene__customer-leg scene__customer-leg_right">
+                <div class="scene__customer-foot"></div>
+            </div>
+
+            <div class="scene__customer-arm scene__customer-arm_left">
+                <div class="scene__customer-palm"></div>
+            </div>
+
+            <div class="scene__customer-scarf">
+                <div class="scene__customer-scarf-pip"></div>
+            </div>
+
+            <div class="scene__customer-head">
+                <div class="scene__customer-eye"></div>
+                <div class="scene__customer-eye"></div>
+                <div class="scene__customer-mouth"></div>
+            </div>
+
+            <div class="scene__customer-arm scene__customer-arm_right">
+                <div class="scene__customer-palm">
+                    <div class="pill scene__pill">
+                        <div class="pill__main"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scene__bottom"></div>
+
+    <div class="scene__company">
+        <div class="company-name scene__company-name">{{company_info.name}}</div>
+    </div>
+</div>
 {% endif %}
+
+
+
 {% endblock content %}

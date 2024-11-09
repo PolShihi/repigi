@@ -1,0 +1,33 @@
+.add-section
+    padding: 20px 10px 25px
+
+    &__title
+        &::first-letter
+            font-size: 1.2em
+            color: $primary_color
+
+    &__items
+        list-style: none
+        display: flex
+        justify-content: space-evenly
+        align-items: stretch
+        flex-wrap: wrap
+        row-gap: 45px
+        margin-top: 30px
+    
+    &__item
+        width: 45%
+        min-width: 300px
+        &-image
+            display: block
+            margin: 0px auto
+            width: 80%
+            border: solid $text_color 2px
+            border-radius: 7%
+        &-text
+            text-align: center
+            font-weight: 600
+            margin-top: 10px
+            &::first-letter
+                font-size: 1.2em
+                color: $primary_color

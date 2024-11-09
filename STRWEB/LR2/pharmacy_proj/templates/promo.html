@@ -1,32 +1,37 @@
 {% extends "base.html" %}
 {% block title %}Promo{% endblock title%}
 {% block content %}
-<h1>Promo</h1>
-<h2>Active</h2>
-{% if promo_active %}
-    <ul>
-        {% for promo in promo_active %}
-            <li>
-                <h3>{{ promo.promo }}</h1>
-                <p>description: {{ promo.description }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No active promotional codes.</p>
-{% endif %}
-<hr>
-<h2>Archived</h2>
-{% if promo_archived %}
-    <ul>
-        {% for promo in promo_archived %}
-            <li>
-                <h3>{{ promo.promo }}</h1>
-                <p>description: {{ promo.description }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No archived promotional codes.</p>
-{% endif %}
+<section class="promo">
+    <h1 class="promo__title">Promo</h1>
+
+    <hr>
+
+    <h2 class="promo__subtitle">Active</h2>
+    {% if promo_active %}
+        <ul class="promo__items">
+            {% for promo in promo_active %}
+                <li class="promo__item">
+                    <h3 class="promo__item-title">{{ promo.promo }}</h1>
+                    <p class="promo__item-description"><strong>Description:</strong> {{ promo.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No active promotional codes.</p>
+    {% endif %}
+
+    <h2 class="promo__subtitle">Archived</h2>
+    {% if promo_archived %}
+        <ul class="promo__items promo__items_archived">
+            {% for promo in promo_archived %}
+                <li class="promo__item promo__item">
+                    <h3 class="promo__item-title">{{ promo.promo }}</h1>
+                    <p class="promo__item-escription"><strong>Description:</strong> {{ promo.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No archived promotional codes.</p>
+    {% endif %}
+</section>
 {% endblock content %}

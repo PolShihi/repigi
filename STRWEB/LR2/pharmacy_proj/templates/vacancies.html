@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Vacancies{% endblock title %}
 {% block content %}
-<h1>Vacancy List</h1>
-<ul>
-    {% for vacancy in vacancies %}
-        <hr>
-        <li>
-            <h2>{{ vacancy.position }}</h2>
-            <p>Description: {{ vacancy.description }}</p>
-            <p>Salary: {{ vacancy.salary }}</p>
-            <p>Requirements: {{ vacancy.requirements }}</p>
-            <p>Posted Date: {{ vacancy.posted_date }}</p>
-        </li>
-        <hr>
-    {% empty %}
-        <li>No vacancies.</li>
-    {% endfor %}
-</ul>
+<section class="vacancies">
+    <h1 class="vacancies__title">Vacancy List</h1>
+    <ul class="vacancies__items">
+        {% for vacancy in vacancies %}
+            <li class="vacancies__item">
+                <h2 class="vacancies__item-position">{{ vacancy.position }}</h2>
+                <p class="vacancies__item-description"><strong>Description:</strong> {{ vacancy.description }}</p>
+                <p class="vacancies__item-salary"><strong>Salary:</strong> {{ vacancy.salary }}$</p>
+                <p class="vacancies__item-requirements"><strong>Requirements:</strong> {{ vacancy.requirements }}</p>
+                <p class="vacancies__item-date"><time datetime="{{ vacancy.posted_date }}">{{ vacancy.posted_date }}</time></p>
+            </li>
+        {% empty %}
+            <li>No vacancies.</li>
+        {% endfor %}
+    </ul>
+</section>
 {% endblock content %}

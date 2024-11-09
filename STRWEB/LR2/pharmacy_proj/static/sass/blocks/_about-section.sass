@@ -1,0 +1,60 @@
+.about-section
+    padding: 0px 10px 35px
+
+    &__logo
+        display: block
+        width: 300px
+        margin: 7px auto 0px
+        &:hover
+            animation: company-logo-shaking 1s ease infinite 
+            
+
+    &__phone, &__reg-number
+        font-weight: 700
+        font-size: 1.1em
+        margin-top: 5px
+        strong
+            font-weight: 400
+            font-family: monospace
+            font-size: 1.3em
+    
+    &__phone
+        margin-top: 25px
+    
+    &__header-video
+        margin-top: 40px
+        text-align: center
+
+    &__video
+        display: block
+        width: 80%
+        max-width: 800px
+        margin: 20px auto 0
+        border: solid $additional_color 3px
+        border-radius: 5%/10%
+        box-shadow: transparentize($additional_color, 0.35) 0px 5px 15px
+
+    &_news
+        padding: 0
+        width: 320px
+        position: absolute
+        top: 100px
+        right: -0.5%
+        animation: news-scaling 1.4s infinite
+    
+    &__title
+        &_news
+            display: none
+
+
+@media (max-width: 1050px)
+    .about-section
+        &_news
+            position: static
+            width: auto
+            padding: 20px 10px 10px
+            animation: none
+        
+        &__title
+            &_news
+                display: block

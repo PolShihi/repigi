@@ -1,0 +1,49 @@
+.profile
+    padding: 0px 10px 15px
+
+    &__name
+        margin-top: 15px
+
+    hr
+        margin-top: 12px
+        border-color: $text_color
+
+    &__subtitle
+        margin-top: 24px
+        font-size: 1.35em
+
+    &__items
+        list-style: none
+        margin-top: 10px
+
+        &_paid
+            opacity: 0.4
+
+    &__item
+        border: solid 1px $additional_color
+        border-radius: 10px
+        margin-top: 10px
+        padding: 5px 6px
+
+        &-name
+            text-align: left
+            font-size: 1.2em
+
+        &-image
+            width: 250px
+            height: 250px
+            object-fit: contain
+            margin-top: 10px
+
+        &-description
+            margin-top: 12px
+
+        &-cost, &-quantity, &-department, &-instruction, &-categories
+            margin-top: 4px
+
+        &-cost
+            span
+                text-shadow: $secondary_color 0px 0px 1px
+                font-family: monospace
+                font-size: 1.3em
+                font-style: italic

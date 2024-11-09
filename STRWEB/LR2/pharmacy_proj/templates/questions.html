@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Q&A{% endblock title %}
 {% block content %}
-<h1>Question and Answer List</h1>
+<section class="faq">
+    <h1 class="faq__title">Question and Answer List</h1>
+
     {% for question in questions %}
-        <hr>
-        <details>
-            <summary>
+        <details class="faq__container">
+            <summary class="faq__question">
                 {{ question.question }}
             </summary>
-            <p>{{ question.answer }}</p>
-            <p><em>Date Added:</em> <time datetime="{{question.date_added}}">{{ question.date_added }}</time></p>
+            <p class="faq__answer">{{ question.answer }}</p>
+            <p class="faq__time"><time datetime="{{question.date_added}}">{{ question.date_added }}</time></p>
         </details>
-        <hr>
     {% empty %}
         <p>No questions.</p>
     {% endfor %}
+</section>
 {% endblock content %}

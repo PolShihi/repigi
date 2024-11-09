@@ -1,0 +1,38 @@
+.reviews
+    padding: 0px 10px 15px
+
+    &__items
+        margin-top: 15px
+        list-style: none
+
+    &__item
+        border: solid $additional_color 1px
+        border-radius: 10px
+        padding: 5px 6px
+        margin-top: 10px
+
+        &-author[itemprop^="author"]
+            font-size: 1.15em
+            text-align: left
+
+        &-content[itemprop$="reviewBody"]
+            font-size: 0.9em
+            text-indent: 7px
+            margin-top: 7px
+
+            &::first-letter
+                text-transform: uppercase
+                color: $primary_color
+                font-weight: 700
+
+        &-rating
+            margin-top: 10px
+
+            span
+                font-family: monospace
+                color: $primary_color
+                font-size: 1.4em
+
+        &-date
+            text-align: right
+

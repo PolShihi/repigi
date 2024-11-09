@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template import Template, Context
 from django.http import HttpRequest, HttpResponseNotFound
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
@@ -512,7 +513,12 @@ Returns:
         except AddBanner.DoesNotExist:
             logger.warning('There is no add baners')
             
-        return render(request, 'home.html', {'news': news, 'company_info': company_info, 'add_banners': add_banners})
+        try:
+            partners = Partner.objects.all()
+        except AddBanner.DoesNotExist:
+            logger.warning('There is no add baners')
+            
+        return render(request, 'home.html', {'news': news, 'company_info': company_info, 'add_banners': add_banners, 'partners': partners})
 
     context = {}
     medications = list(Medication.objects.all())
@@ -868,7 +874,9 @@ def about_view(request):
     company_info = CompanyInfo.objects.first()
     company_history = CompanyHistory.objects.all()
     partners = Partner.objects.all()
-    return render(request, 'about.html', {'company_info': company_info, 'company_history': company_history, 'partners': partners})
+    certificate = Template(company_info.certificate).render(Context({'company_info': company_info}))
+    
+    return render(request, 'about.html', {'company_info': company_info, 'certificate': certificate, 'company_history': company_history, 'partners': partners})
 
 def html_stuff_view(request):
     return render(request, 'html_stuff.html')

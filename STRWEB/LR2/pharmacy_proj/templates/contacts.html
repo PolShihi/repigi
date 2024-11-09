@@ -1,47 +1,50 @@
 {% extends "base.html" %}
-{% block styles %}
-.image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-{% endblock styles %}
 {% block title %}Contacts{% endblock title %}
 {% block content %}
-<h1>Contacts List</h1>
-{% if employees %}
-<ul>
-    {% for employee in employees %}
-        <hr>
-        <li>
-            <h2>{{ employee.user.get_full_name }}</h2>
-            <p><strong>Email:</strong> {{ employee.user.email }}
-            <p><strong>Phone:</strong> {{ employee.phone }}</p>
-            <p><strong>Position:</strong> {{ employee.position }}</p>
-            <img class='image' src="{{ employee.photo.url }}" alt="Employee Photo">
-            {% if user.is_superuser %}
-            <div>
-                <a href="{% url "pharmacy:employee_delete" id=employee.id %}">
-                    <button>delete</button>
-                </a>
-                <a href="{% url "pharmacy:employee_update" id=employee.id %}">
-                    <button>update</button>
-                </a>
-            </div>
-            {% endif %}
-        </li>
-        <hr>
-    {% endfor %}
-</ul>
-{% else %}
-<hr>
-<p>No employees.</p>
-{% endif %}
-{% if user.is_superuser %}
-<hr>
-<a href="{% url "pharmacy:employee_create" %}">
-    <button>add</button>
-</a>
-{% endif %}
+<section class="contacts">
+    <h1 class="contacts__title">Contacts List</h1>
+
+    {% if employees %}
+    <ul class="contacts__items">
+        {% for employee in employees %}
+            <li class="contacts__item">
+                <img class="contacts__item-image" src="{{ employee.photo.url }}" alt="Employee Photo">
+                
+                <h2 class="contacts__item-name">{{ employee.user.get_full_name }}</h2>
+
+                <p class="contacts__item-email">({{ employee.user.email }})</p>
+
+                <div class="contacts__item-phone">
+                    <p class="contacts__item-phone-key"><strong>Phone:</strong></p>
+                    <p class="contacts__item-phone-value">{{ employee.phone }}</p>
+                </div>
+
+                <div class="contacts__item-position">
+                    <p class="contacts__item-position-key"><strong>Position:</strong></p>
+                    <p class="contacts__item-position-value">{{ employee.position }}</p>
+                </div>
+
+                {% if user.is_superuser %}
+                <div>
+                    <a href="{% url "pharmacy:employee_delete" id=employee.id %}">
+                        <button>delete</button>
+                    </a>
+                    <a href="{% url "pharmacy:employee_update" id=employee.id %}">
+                        <button>update</button>
+                    </a>
+                </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No employees.</p>
+    {% endif %}
+    {% if user.is_superuser %}
+    <hr>
+    <a href="{% url "pharmacy:employee_create" %}">
+        <button>add</button>
+    </a>
+    {% endif %}
+</section>
 {% endblock content %}
