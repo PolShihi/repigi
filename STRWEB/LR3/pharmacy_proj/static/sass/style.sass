@@ -7,7 +7,6 @@
     box-sizing: border-box
     padding: 0px
     margin: 0px
-    color: $text_color
     &::selection
         color: $background_color
         background-color: rgb(0, 0, 0)
@@ -22,6 +21,7 @@ body
     background-color: $background_color
     background-image: url("../krestik.webp")
     background-size: 30px 30px
+    color: $text_color
 
 .container
     max-width: 1240px
@@ -37,10 +37,16 @@ body
         box-shadow: transparentize($additional_color, 0.7) 0px 19px 38px, transparentize($additional_color, 0.78) 0px 15px 12px
         border-radius: 5px
 
+@import "blocks/background"
+@import "blocks/slider"    
+@import "blocks/timer"
 @import "blocks/company-name"
 @import "blocks/button"
 @import "blocks/article"
 @import "blocks/form"
+@import "blocks/pagination"
+@import "blocks/modal"
+@import "blocks/style-controls"
 @import "blocks/navigation"
 @import "blocks/certificate"
 @import "blocks/shop"
@@ -52,14 +58,17 @@ body
 @import "blocks/news"
 @import "blocks/policy"
 @import "blocks/info"
+@import "blocks/graph"
 @import "blocks/faq"
 @import "blocks/contacts"
 @import "blocks/vacancies"
 @import "blocks/reviews"
+@import "blocks/home"
 @import "blocks/promo"
 @import "blocks/profile"
 @import "blocks/login"
 @import "blocks/html"
 @import "blocks/pill"
 @import "blocks/scene"
+@import "blocks/bank"
 @import "media"

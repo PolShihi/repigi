@@ -39,6 +39,10 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_display = ('id', 'date_of_birth', 'date_of_birth', 'phone')
     list_display_links = ('id',)
     list_filter = ('date_of_birth',)
+
+class EmployeeAddAdmin(admin.ModelAdmin):
+    list_display = ('id', 'phone')
+    list_display_links = ('id',)
     
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('id','user', 'date_of_birth', 'phone')
@@ -113,6 +117,7 @@ admin.site.register(Medication, MedicationAdmin)
 admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(PharmacyDepartment, PharmacyDepartmentAdmin)
 admin.site.register(Employee, EmployeeAdmin)
+admin.site.register(EmployeeAdd, EmployeeAddAdmin)
 admin.site.register(Client, ClientAdmin)
 admin.site.register(CompanyInfo, CompanyInfoAdmin)
 admin.site.register(QuestionAnswer, QuestionAnswerAdmin)

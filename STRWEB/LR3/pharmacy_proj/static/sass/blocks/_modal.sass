@@ -1,0 +1,56 @@
+.modal
+    display: none
+    position: fixed
+    z-index: 1001
+    top: 0%
+    left: 0%
+    width: 100vw
+    height: 100vh
+    background-color: transparentize($text_color, 0.2)
+
+    &-birth-date, &-birth-date-end
+        display: none
+        padding: 10px 10px 15px
+        position: fixed
+        left: 50%
+        top: 50%
+        transform: translateX(-50%) translateY(-50%)
+        width: 400px
+        height: 200px
+        background-color: $background_color
+        border: solid 3px $additional_color
+        border-radius: 15px
+
+        input[type="date"]
+            width: 130px
+            height: 50px
+            display: block
+            margin: 25px auto 0px
+            padding: 0 5px
+            font-size: 1.1em
+
+        input[type="submit"]
+            display: block
+            margin: 20px auto 0
+            cursor: pointer
+
+    &-birth-date-end
+        &__close
+            position: fixed
+            top: 2%
+            right: 2%
+            color: $text_color
+            cursor: pointer
+            transition: all 0.2s
+            font-size: 1.3em
+
+            &:hover
+                color: $secondary_color
+
+        &__text
+            margin-top: 30px
+            font-weight: 600
+
+
+
+

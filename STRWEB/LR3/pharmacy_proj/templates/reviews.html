@@ -21,5 +21,15 @@
         <p>No reviews available.</p>
     {% endif %}
     <a class="button reviews__button" href="{% url 'pharmacy:review_create' %}">Add Review</a>
+
+    <div class="style-controls">
+        <div class="form style-controls__toggle">
+            <label>Показать элементы управления</label> 
+            <input type="checkbox" id="toggle-controls">
+        </div>
+
+        <div id="style-controls" style="display: none;" class="style-controls__controls"></div>
+    </div>
+    
 </section>
 {% endblock content %}

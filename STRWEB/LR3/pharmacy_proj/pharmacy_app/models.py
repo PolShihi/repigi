@@ -132,6 +132,17 @@ Methods:
         today = timezone.now().date()
         age = today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
         return age
+
+
+class EmployeeAdd(models.Model):
+    full_name = models.TextField()
+    phone = models.CharField(max_length=20, default='')
+    position = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='employee_photos')
+    email = models.TextField()
+
+    def __str__(self):
+        return self.full_name
     
 class Client(models.Model):
     """
@@ -181,6 +192,7 @@ class CompanyHistory(models.Model):
 class AddBanner(models.Model):
     text = models.TextField()
     banner = models.ImageField(upload_to='add_banners')
+    url_reference = models.URLField(max_length=255)
 
     def __str__(self):
         return self.text

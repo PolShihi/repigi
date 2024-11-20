@@ -10,17 +10,34 @@
 
 </section>
 
+<section class="graph">
+    <canvas id="my-chart" width="800"></canvas>
+    <button class="button graph__button" id="save-chart">Save chart</button>
+</section>
+
 {% if add_banners %}
 <section class="add-section">
     <h2 class="add-section__title">See this!</h2>
-    <ul class="add-section__items">
-        {% for banner in add_banners %}
-        <li class="add-section__item">
-            <img class="add-section__item-image" src="{{ banner.banner.url }}" alt="image">
-            <p class="add-section__item-text">{{ banner.text }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+    <div id="delay" data-value="{{ delay_time }}" style="display: none;"></div>
+    <div class="slider">
+        <ul class="slider__slides">
+            {% for banner in add_banners %}
+                <li class="slider__slide">
+                    <a href="{{banner.url_reference}}">
+                        <img src="{{ banner.banner.url }}" alt="ad image">
+                        <p>{{ banner.text }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="slider__counter"></div>
+        
+        <div class="slider__prev">⮜</div>
+        <div class="slider__next">⮞</div>
+
+        <div class="slider__pagination"></div>
+    </div>
 </section>
 {% endif %}
 
@@ -58,14 +75,6 @@
         <p class="article__time"><time>{{ news.posted_date }}</time>
         </p>
     </article>
-</section>
-
-<section class="pill">
-    <div class="pill__main">
-        <div class="pill__text">
-            <div class="company-name pill__company-name">{{company_info.name}}</div>
-        </div>
-    </div>
 </section>
 
 <div class="scene">

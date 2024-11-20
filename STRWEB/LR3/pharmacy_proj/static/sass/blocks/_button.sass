@@ -1,6 +1,7 @@
 .button, .form input[type="submit"]
     display: flex
     align-items: center
+    justify-content: center
     height: 30px
     border: 2px solid $background_color
     padding: 3px 9px
@@ -9,6 +10,7 @@
     font-size: 18px
     font-weight: bold
     transition: color .5s, background-color .3s
+    cursor: pointer
     &:hover
         background-color: $background_color
         color: $text_color
@@ -81,3 +83,50 @@ a.reviews__button, a.profile__button
 .form input[type="submit"]
     margin: 0
     height: auto
+
+
+.pagination__button
+    width: 30px
+    height: 30px
+    padding: 0px 4px
+    border-color: $text_color
+    color: $text_color
+    &:hover
+        background-color: $text_color
+        color: $background_color
+
+    &_active
+        background-color: $text_color
+        color: $background_color
+
+.contacts__button, .graph__button
+    border-color: $text_color
+    padding: 0px 4px
+    color: $text_color
+    &:hover
+        background-color: $text_color
+        color: $background_color
+    &:disabled
+        opacity: 0.5
+
+    &_show
+        margin-top: 10px
+        height: 2em
+
+    &_form
+        &-filter, &-premiate, &-add
+            height: auto
+
+        &-premiate
+            display: block
+
+        &-add
+            margin-top: 10px
+            height: 1.8em
+            border-color: darken($additional_color, 20)
+            color: darken($additional_color, 20)
+            &:hover
+                background-color: darken($additional_color, 20)
+
+.graph__button
+    margin: 2px auto 0px

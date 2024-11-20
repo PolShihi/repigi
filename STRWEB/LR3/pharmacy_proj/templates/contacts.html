@@ -4,7 +4,7 @@
 <section class="contacts">
     <h1 class="contacts__title">Contacts List</h1>
 
-    {% if employees %}
+    {% comment %} {% if employees %}
     <ul class="contacts__items">
         {% for employee in employees %}
             <li class="contacts__item">
@@ -39,7 +39,143 @@
     </ul>
     {% else %}
     <p>No employees.</p>
+    {% endif %} {% endcomment %}
+    
+
+    {% if employees %}
+
+    <button class="button contacts__button contacts__button_show" id="show-employee-form">Show form</button>
+
+    <form class="form contacts__form contacts__form_add hidden" id="employee-form" action="{% url 'pharmacy:contacts' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <label>
+            Full Name:
+            <input type="text" name="name" required>
+        </label>
+        <label>
+            Photo:
+            <input type="file" name="photo" accept="image/*" required>
+        </label>
+        <label>
+            URL:
+            <input type="text" name="url" required>
+            <p class="contacts__validation-msg" id="url-validation"></p>
+        </label>
+        <label>
+            Email:
+            <input type="email" name="email" required>
+        </label>
+        <label>
+            Phone:
+            <input type="text" name="phone" required>
+            <p class="contacts__validation-msg" id="phone-validation"></p>
+        </label>
+        <label>
+            Position:
+            <input type="text" name="position" required>
+        </label>
+        <button class="button contacts__button contacts__button_form-add" type="submit" id="add-to-table-button" style="display: none">Add to Table</button>
+    </form>
+
+    <div class="contacts__actions">
+        <div class="form contacts__form contacts__form_filter">
+            <input type="text" id="filter-input" placeholder="Text filter">
+            <button class="button contacts__button contacts__button_form-filter" id="filter-button">Find</button>
+        </div>
+
+        <button class="button contacts__button contacts__button_form-premiate" id="bonus-button">Premiate</button>
+    </div>
+
+    <table class="contacts__table">
+        <thead>
+            <tr>
+                <th>!</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                {% if user.is_superuser %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr class="contacts__item">
+                <td class="contacts__item-checkbox">
+                    <input type="checkbox">
+                </td>
+                <td class="contacts__item-image">
+                    <img src="{{ employee.photo.url }}" alt="Employee Photo">
+                </td>
+                <td class="contacts__item-name">{{ employee.user.get_full_name }}</td>
+                <td class="contacts__item-email">{{ employee.user.email }}</td>
+                <td class="contacts__item-phone">{{ employee.phone }}</td>
+                <td class="contacts__item-position">{{ employee.position }}</td>
+                {% if user.is_superuser %}
+                <td>
+                    <a href="{% url 'pharmacy:employee_delete' id=employee.id %}">
+                        <button>Delete</button>
+                    </a>
+                    <a href="{% url 'pharmacy:employee_update' id=employee.id %}">
+                        <button>Update</button>
+                    </a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for employee in employees_add %}
+            <tr class="contacts__item">
+                <td class="contacts__item-checkbox">
+                    <input type="checkbox">
+                </td>
+                <td class="contacts__item-image">
+                    <img src="{{ employee.photo.url }}" alt="Employee Photo">
+                </td>
+                <td class="contacts__item-name">{{ employee.full_name }}</td>
+                <td class="contacts__item-email">{{ employee.email }}</td>
+                <td class="contacts__item-phone">{{ employee.phone }}</td>
+                <td class="contacts__item-position">{{ employee.position }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <section class="pill" style="display: none;">
+        <div class="pill__main">
+            <div class="pill__text">
+                <div class="company-name pill__company-name">Pharmacy</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="pagination" id="pagination-controls"></div>
+
+    <p class="contacts__bonus-message" id="bonus-message"></p>
+
+    <div class="contacts__details" id="selected-row-info" style="display: none;">
+        <img class="contacts__details-image" src="" alt="Employee Photo">
+                
+        <h2 class="contacts__details-name"></h2>
+
+        <p class="contacts__details-email"></p>
+
+        <div class="contacts__details-phone">
+            <p class="contacts__details-phone-key"><strong>Phone:</strong></p>
+            <p class="contacts__details-phone-value"></p>
+        </div>
+
+        <div class="contacts__details-position">
+            <p class="contacts__details-position-key"><strong>Position:</strong></p>
+            <p class="contacts__details-position-value"></p>
+        </div>
+    </div>
+
+    {% else %}
+        <p>No employees.</p>
     {% endif %}
+
     {% if user.is_superuser %}
     <hr>
     <a href="{% url "pharmacy:employee_create" %}">

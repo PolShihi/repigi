@@ -1,20 +1,93 @@
 .contacts
     padding: 0px 10px 15px
+    overflow: hidden
 
-    &__items
+    // &__items
+    //     display: flex
+    //     justify-content: space-around
+    //     flex-wrap: wrap
+    //     row-gap: 30px
+    //     list-style: none
+    //     margin-top: 25px
+
+    &__actions
+        margin-top: 20px
         display: flex
-        justify-content: space-around
-        flex-wrap: wrap
-        row-gap: 30px
-        list-style: none
+        align-items: stretch
+        justify-content: space-between
+
+    &__table
+        width: 100%
+        border-collapse: collapse
         margin-top: 25px
 
+        th, td
+            word-break: break-all
+            border: 2px solid $text_color
+            padding: 5px
+            text-align: center
+            vertical-align: middle
+            transition: all 0.3s
+
+        th
+            cursor: pointer
+            font-size: 1.3em
+
     &__item
-        margin: 0 15px
+        cursor: pointer
+
+        &:hover
+            td
+                color: $background_color
+                background-color: $text_color
+                border-color: $background_color
+
+        &-image
+            width: 25%
+
+            img
+                width: 90%
+                object-fit: contain
+
+        &-name, &-email, &-phone, &-position
+            font-size: 1.2em
+
+        &-checkbox
+            width: 2%
+
+            input
+                accent-color: $text_color
+                transition: transform .2s
+
+                &:checked
+                    transform: scale(1.1)
+
+        &-name
+            width: 16%
+
+        &-email
+            min-width: 15%
+            width: 21%
+
+        &-phone
+            min-width: 15%
+            width: 21%
+
+        &-position
+            width: 15%
+
+    &__bonus-message
+        margin-top: 10px
+        font-weight: 500
+        text-align: center
+        padding: 0px 10px
+        
+    &__details
+        margin: 20px auto 0px
         padding: 10px 10px 5px
         border: solid 1px $additional_color
         border-radius: 5px/5px
-        width: 40%
+        width: 500px
         min-width: 300px
 
         &-image
@@ -41,6 +114,11 @@
         &-phone
             margin-top: 12px
 
+    &__validation-msg
+        margin-top: 2px
+        color: $secondary_color
+        font-size: 0.8em
+        font-weight: 600
 
 
     

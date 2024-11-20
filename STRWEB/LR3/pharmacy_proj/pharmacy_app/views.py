@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template import Template, Context
-from django.http import HttpRequest, HttpResponseNotFound
+from django.http import HttpRequest, HttpResponseNotFound, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from .models import *
@@ -17,8 +17,10 @@ import os
 import requests
 import logging
 from pharmacy_proj.settings import MEDIA_ROOT, MEDIA_URL
+import json
 
 logger = logging.getLogger(__name__)
+delay_time = 5
 
 # Create your views here.
 
@@ -350,8 +352,31 @@ Returns:
 
 """
     logger.info(contacts_view.__name__ + ' is called')
+
+    if request.method == 'POST':
+        try:
+            full_name = request.POST.get('name')
+            phone = request.POST.get('phone')
+            position = request.POST.get('position')
+            email = request.POST.get('email')
+            photo = request.FILES.get('photo')
+            
+            employee = EmployeeAdd.objects.create(
+                full_name=full_name,
+                phone=phone,
+                position=position,
+                email=email,
+                photo=photo
+            )
+            return JsonResponse({'success': True, 'employee_id': employee.id})
+        except Exception as e:
+            logger.error(f"Error adding employee: {e}")
+            return JsonResponse({'success': False, 'error': str(e)}, status=400)
+        
+    
     employees = Employee.objects.all()
-    return render(request, 'contacts.html', {'employees': employees})
+    employees_add = EmployeeAdd.objects.all()
+    return render(request, 'contacts.html', {'employees': employees, 'employees_add': employees_add})
 
 
 @login_required
@@ -482,6 +507,7 @@ Returns:
 
 
 def home_view(request: HttpRequest):
+    global delay_time
     """
 Renders the home page view based on the user's authentication status and group membership.
 
@@ -518,7 +544,7 @@ Returns:
         except AddBanner.DoesNotExist:
             logger.warning('There is no add baners')
             
-        return render(request, 'home.html', {'news': news, 'company_info': company_info, 'add_banners': add_banners, 'partners': partners})
+        return render(request, 'home.html', {'news': news, 'company_info': company_info, 'add_banners': add_banners, 'partners': partners, 'delay_time': delay_time})
 
     context = {}
     medications = list(Medication.objects.all())
@@ -553,6 +579,23 @@ Returns:
         ax.set_title('Total Revenue by Medication')
         fig.savefig(os.path.join(MEDIA_ROOT, 'chart.png'), bbox_inches='tight')
         context['chart_url'] = MEDIA_URL + 'chart.png'
+        
+    try:
+        add_banners = AddBanner.objects.all()
+    except AddBanner.DoesNotExist:
+        logger.warning('There is no add baners')
+        
+    context['add_banners'] = add_banners
+    
+    if request.method == 'POST':
+        form = DelayForm(request.POST)
+        if form.is_valid():
+            delay_time = form.cleaned_data['delay']
+    
+    form = DelayForm()
+    context['form'] = form
+    
+    context['delay_time'] = delay_time
 
     return render(request, 'home_details.html', context)
 

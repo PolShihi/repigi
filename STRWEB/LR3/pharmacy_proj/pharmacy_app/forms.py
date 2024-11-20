@@ -199,3 +199,14 @@ class EmployeeUpdateForm(forms.ModelForm):
             user.save()
             employee.save()
         return employee
+    
+class DelayForm(forms.Form):
+    delay = forms.FloatField(
+        min_value=0.5,
+        max_value=3600,
+        error_messages={
+            'required': 'Это поле обязательно.',
+            'min_value': 'Введите число больше 0.5.',
+            'max_value': 'Введите число меньше 3600.'
+        }
+    )

@@ -2,8 +2,8 @@
 {% block title %}Shop{% endblock title %}
 {% block content %}
 
-{% if medications %}
     <section class="shop">
+        {% if medications %}
         <h1>Shop</h1>
         <form method="GET" class="form">
             <table>
@@ -24,9 +24,11 @@
             </li>
             {% endfor %}
         </ul>
+
+        <div class="pagination" id="pagination-controls"></div>
+        {% else %}
+            <p>No medication.</p>
+        {% endif %}
     </section>
-{% else %}
-    <p>No medication.</p>
-{% endif %}
 
 {% endblock content %}

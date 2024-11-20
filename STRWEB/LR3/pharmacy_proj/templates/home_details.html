@@ -1,38 +1,72 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<p>Welcome to the home page!</p>
-{% if sorted_medications %}
-<hr>
-<h2>Medication statistics</h2>
-<h3>List of alphabetically sorted medications</h3>
-<table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Total revenue</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for medication in sorted_medications %}
+<section class="home">
+  {% if sorted_medications %}
+  <h2>Medication statistics</h2>
+  <h3>List of alphabetically sorted medications</h3>
+  <table>
+      <thead>
         <tr>
-          <td>{{ medication.name }}</td>
-          <td>{{ medication.get_total_revenue }}$</td>
+          <th>Name</th>
+          <th>Total revenue</th>
         </tr>
-      {% endfor %}
-    </tbody>
-</table>
-<p><strong>Average revenue:</strong> {{average_revenue}}$</p>
-<p><strong>Mode revenue:</strong> {{mode_revenue}}$</p>
-<p><strong>Median revenue:</strong> {{median_revenue}}$</p>
-<p><strong>Most popular medication:</strong> {{most_popular_medication.name}} ({{most_popular_medication.get_total_number_of_ordered}} units)</p>
-<p><strong>Most profitable medication:</strong> {{most_profitable_medication.name}} ({{most_profitable_medication.get_total_revenue}}$)</p>
-<image src="{{chart_url}}">
-{% endif %}
-{% if average_age %}
-<hr>
-<h2>Client age statistics</h2>
-<p><strong>Average age:</strong> {{average_age}}</p>
-<p><strong>Median age:</strong> {{median_age}}</p>
-{% endif %}
+      </thead>
+      <tbody>
+        {% for medication in sorted_medications %}
+          <tr>
+            <td>{{ medication.name }}</td>
+            <td>{{ medication.get_total_revenue }}$</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+  <p><strong>Average revenue:</strong> {{average_revenue}}$</p>
+  <p><strong>Mode revenue:</strong> {{mode_revenue}}$</p>
+  <p><strong>Median revenue:</strong> {{median_revenue}}$</p>
+  <p><strong>Most popular medication:</strong> {{most_popular_medication.name}} ({{most_popular_medication.get_total_number_of_ordered}} units)</p>
+  <p><strong>Most profitable medication:</strong> {{most_profitable_medication.name}} ({{most_profitable_medication.get_total_revenue}}$)</p>
+  <image src="{{chart_url}}" style="width: 95%; margin-top: 15px;">
+  {% endif %}
+  {% if average_age %}
+  <hr>
+  <h2>Client age statistics</h2>
+  <p><strong>Average age:</strong> {{average_age}}</p>
+  <p><strong>Median age:</strong> {{median_age}}</p>
+  {% endif %}
+  
+  {% if add_banners %}
+  <h2 style="margin-top: 20px">Delay time form</h2>
+  <form class="form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="save">
+  </form>
+  
+  <section class="add-section">
+      <h2 class="add-section__title">See this!</h2>
+      <div id="delay" data-value="{{ delay_time }}" style="display: none;"></div>
+      <div class="slider">
+          <ul class="slider__slides">
+              {% for banner in add_banners %}
+                  <li class="slider__slide">
+                      <img src="{{ banner.banner.url }}" alt="ad image">
+                      <p>{{ banner.text }}</p>
+                  </li>
+              {% endfor %}
+          </ul>
+  
+          <div class="slider__counter"></div>
+  
+          <div class="slider__prev">⮜</div>
+          <div class="slider__next">⮞</div>
+  
+          <div class="slider__pagination"></div>
+      </div>
+  </section>
+  {% endif %}
+</section>
+
 {% endblock content %}

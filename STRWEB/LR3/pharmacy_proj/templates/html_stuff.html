@@ -301,6 +301,50 @@
     
         <iframe width="560" height="315" src="https://www.youtube.com/embed/GT77G1loHsI?si=k8A30_G6a_-g0ql1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen sandbox="allow-same-origin allow-top-navigation allow-forms allow-scripts">Не прогрузилось</iframe>
     </section>
+
+    <section class="bank">
+        <h2>Добавить клиента</h2>
+
+        <form id="client-form" class="form bank__client-form">
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <br>
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <br>
+            <label for="middleName">Отчество:</label>
+            <input type="text" id="middleName" name="middleName" required>
+            <br>
+            <input type="submit" value="Добавить клиента"></input>
+        </form>
+        <div id="error-message-client" class="bank__error-message"></div>
+
+        <h2>Добавить счет и депозит</h2>
+        <form id="account-form" class="form bank__account-form">
+            <label for="client-select">Выберите клиента:</label>
+            <select id="client-select" name="clientName" required>
+                <option selected hidden disabled value="">--Выберите клиента--</option>
+            </select>
+            <br>
+            <label for="accountNumber">Номер счета:</label>
+            <input type="text" id="accountNumber" name="accountNumber" required>
+            <br>
+            <label for="deposit">Сумма вклада:</label>
+            <input type="number" id="deposit" name="deposit" required>
+            <br>
+            <input type="submit" value="Добавить счет"></input>
+        </form>
+        <div id="error-message-account" class="bank__error-message"></div>
+
+        <h2>Список клиентов</h2>
+        <div id="client-list" class="bank__list">
+        </div>
+
+        <h2>Клиенты с несколькими счетами</h2>
+        <div id="result-list" class="bank__list"></div>
+    </section>
 </section>
+
+<script defer src="{% static "js/task_prototype.js" %}"></script>
 
 {% endblock content %}

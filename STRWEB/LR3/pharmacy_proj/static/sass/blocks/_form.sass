@@ -3,7 +3,7 @@
         opacity: 0.2
 
 
-    input[type="text"], input[type="number"], input[type="password"], input[type="email"], select, textarea
+    input[type="text"], input[type="number"], input[type="password"], input[type="email"], input[type="date"], select, textarea
         font-family: monospace
         transition: transform .2s
         background-color: white
@@ -17,15 +17,9 @@
             border-width: 2px
             transform: scale(1.01)
 
-        &:invalid, &:out-of-range
-            border-color: $secondary_color
-
         &:required
             outline: dashed 1px $text_color
             outline-offset: -1px
-
-        &:placeholder-shown
-            background-color: $secondary_color
 
     input[type="checkbox"], input[type="radio"]
         accent-color: $primary_color
@@ -33,6 +27,58 @@
 
         &:checked
             transform: scale(1.2)
+
+.contacts__form
+    &_filter
+        display: flex
+        align-items: stretch
+        justify-content: flex-start
+        column-gap: 5px
+        input[type="text"]
+            display: block
+            padding: 0px 4px
+            border: solid 1px $additional_color
+            line-height: 1.2em
+            font-size: 1.3em
+            height: 2em
+
+        button
+            display: block
+
+    &_add
+        margin-top: 8px
+        overflow: hidden
+        padding: 10px 7px
+        display: block
+        height: 300px
+        width: 400px
+        border: solid 2px $additional_color
+        border-radius: 10px
+        transition: transform 0.5s, width 0.1s, height 0.1s
+
+        label
+            margin-top: 15px
+            display: block
+
+            &:first-of-type
+                margin-top: 0px
+
+            input
+                padding: 0 5px
+                height: 1.8em
+
+                &:invalid, &.invalid
+                    border: solid 2px $secondary_color
+                    background-color: #f6c4c4
+
+    &_add.hidden
+        transform: translateX(-50px)
+        height: 0px
+        width: 0px
+        padding: 0px
+
+
+
         
 
 

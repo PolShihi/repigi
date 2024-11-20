@@ -15,6 +15,11 @@
     </style>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
+        <div id="user-is-authenticated" style="display: none;"></div>
+    {% endif %}
+    <div class="background" data-src="{% static "bottle_icon.png" %}"></div>
+
     <section class="navigation">
         <div class="container">
             <header>
@@ -63,9 +68,25 @@
                 {% block content %}{% endblock %}
             </div>
         </div>
+
+        <div class="modal">
+            <div class="form modal-birth-date">
+                <h2>Choose your birth date</h2>
+                <input type="date" id="birth-date" required>
+                <input type="submit" id="submit-birth-date" value="Submit"></input>
+            </div>
+    
+            <div class="modal-birth-date-end">
+                <div class="modal-birth-date-end__close">&#10006;</div>
+                <div class="modal-birth-date-end__text"></div>
+            </div>
+        </div>
     </main>
     <footer>
-        &copy;
+        <div class="timer" id="timer"></div>
     </footer>
+
+    <script defer src="{% static "js/chart.min.js" %}"></script>
+    <script defer type="module" src="{% static "js/script.js" %}"></script>
 </body>
 </html>
